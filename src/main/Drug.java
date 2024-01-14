@@ -55,7 +55,7 @@ public class Drug extends javax.swing.JFrame {
         txtDrugName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtDose = new javax.swing.JTextField();
-        txtSelling_price = new javax.swing.JTextField();
+        txtSellingPrice = new javax.swing.JTextField();
         boxExp_day = new javax.swing.JComboBox<>();
         boxMonth = new javax.swing.JComboBox<>();
         boxYear = new javax.swing.JComboBox<>();
@@ -78,16 +78,16 @@ public class Drug extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(392, 392, 392)
+                .addGap(350, 350, 350)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -146,19 +146,19 @@ public class Drug extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(btnAdddrug, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdateDrug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnDeleteDrug)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnDrugList)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,7 +252,7 @@ public class Drug extends javax.swing.JFrame {
                             .addGap(23, 23, 23)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtSelling_price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSellingPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtDrugType, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +286,7 @@ public class Drug extends javax.swing.JFrame {
                     .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSelling_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSellingPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,18 +305,13 @@ public class Drug extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 466, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +323,7 @@ public class Drug extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,16 +331,15 @@ public class Drug extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(875, 602));
+        setSize(new java.awt.Dimension(873, 559));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -354,57 +348,56 @@ public class Drug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAdddrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdddrugActionPerformed
-    String drugID = txtDrugID.getText();
-    String drugName = txtDrugName.getText();
-    String drugDose = txtDose.getText();
-    String drugPrice = txtSelling_price.getText();
-    String expirationDay = boxExp_day.getSelectedItem().toString();
-    String expirationMonth = boxMonth.getSelectedItem().toString();
-    String expirationYear = boxYear.getSelectedItem().toString();
-    String drugType = txtDrugType.getSelectedItem().toString();
-    String drugQuantity = boxQuantity.getSelectedItem().toString();
-    
+        String drugID = txtDrugID.getText();
+        String drugName = txtDrugName.getText();
+        String drugDose = txtDose.getText();
+        String drugPrice = txtSellingPrice.getText();
+        String expirationDay = boxExp_day.getSelectedItem().toString();
+        String expirationMonth = boxMonth.getSelectedItem().toString();
+        String expirationYear = boxYear.getSelectedItem().toString();
+        String drugType = txtDrugType.getSelectedItem().toString();
+        String drugQuantity = boxQuantity.getSelectedItem().toString();
 
-    if (drugQuantity.equals("0") || drugID.equals("") || drugName.equals("") || drugType.equals("Select Type") || drugDose.equals("") ||
-            expirationDay.equals("Select Day") || expirationMonth.equals("Select Month") || expirationYear.equals("Select Year")) {
-        JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", 2);
-    } else {
-        if (!checkdrug_name()) {
-            String sql = "INSERT INTO drugs (DRUG_ID, NAME, TYPE, DOSE, EXPIRY_DATE,PRICE, QUANTITY) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            int suring = JOptionPane.showConfirmDialog(null, "Do you want to add this drug \n\nName : " + drugName + "\nExpiration_Date : " + expirationDay + "-" + expirationMonth + "-" + expirationYear);
-
-            if (suring == 0) {
-                try {
-                    pre = con.prepareStatement(sql);
-                    pre.setString(1, drugID);
-                    pre.setString(2, drugName);
-                    pre.setString(3, drugType);
-                    pre.setString(4, drugDose);
-                    pre.setString(5, expirationYear + "-" + expirationMonth + "-" + expirationDay);
-                    pre.setString(6, drugPrice);
-                    pre.setString(7, drugQuantity);
-
-                    pre.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Drug has been Added Successfully", "Success Operation", 1);
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
-                }
-                clear();
-            }
+        if (drugQuantity.equals("0") || drugID.equals("") || drugName.equals("") || drugType.equals("Select Type") || drugDose.equals("")
+                || expirationDay.equals("Select Day") || expirationMonth.equals("Select Month") || expirationYear.equals("Select Year")) {
+            JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", 2);
         } else {
-            JOptionPane.showMessageDialog(null, "Drug with this ID already exisist", "Failed Operation", 2);
+            if (!checkdrug_name()) {
+                String sql = "INSERT INTO drugs (DRUG_ID, NAME, TYPE, DOSE, EXPIRY_DATE,PRICE, QUANTITY) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                int suring = JOptionPane.showConfirmDialog(null, "Do you want to add this drug \n\nName : " + drugName + "\nExpiration_Date : " + expirationDay + "-" + expirationMonth + "-" + expirationYear);
+
+                if (suring == 0) {
+                    try {
+                        pre = con.prepareStatement(sql);
+                        pre.setString(1, drugID);
+                        pre.setString(2, drugName);
+                        pre.setString(3, drugType);
+                        pre.setString(4, drugDose);
+                        pre.setString(5, expirationYear + "-" + expirationMonth + "-" + expirationDay);
+                        pre.setString(6, drugPrice);
+                        pre.setString(7, drugQuantity);
+
+                        pre.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Drug has been Added Successfully", "Success Operation", 1);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+                    }
+                    clear();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Drug with this ID already exisist", "Failed Operation", 2);
+            }
         }
-    }
 
     }//GEN-LAST:event_btnAdddrugActionPerformed
 
     private void btnDeleteDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDrugActionPerformed
         if (txtDrugID.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Enter Drug_Name You want to delete", "Missing Information", 2);
+            JOptionPane.showMessageDialog(null, "Enter Drug Name You want to delete", "Missing Information", 2);
         } else {
             if (checkdrug_name()) {
                 String sql = "delete from drugs where DRUG_ID='" + txtDrugID.getText() + "' ";
-                int suring = JOptionPane.showConfirmDialog(null, "Are You Sure From this Request");
+                int suring = JOptionPane.showConfirmDialog(null, "Are You Sure You Want to Delete this Drug?");
                 if (suring == 0) {
                     try {
                         pre = con.prepareStatement(sql);
@@ -422,76 +415,47 @@ public class Drug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteDrugActionPerformed
 
     private void btnUpdateDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDrugActionPerformed
-     if (txtDrugID.getText().equals("") || boxQuantity.getSelectedIndex() == 0 || txtDrugName.getText().equals("")
-            || txtDrugType.getSelectedIndex() == 0 || txtDose.getText().equals("")
-            || txtSelling_price.getText().equals("") || boxExp_day.getSelectedIndex() == 0
-            || boxMonth.getSelectedIndex() == 0 || boxYear.getSelectedIndex() == 0) {
-        JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
-    } else {
-        String sql = "UPDATE drugs SET NAME=?, TYPE=?, DOSE=?, SELLING_PRICE=?, QUANTITY=?, EXPIRATION_DATE=? WHERE DRUG_ID=?";
-        try {
-            // Format the expiration date
-            String expirationDate = boxYear.getSelectedItem() + "-" +
-                                    String.format("%02d", boxMonth.getSelectedIndex()) + "-" +
-                                    String.format("%02d", Integer.parseInt(boxExp_day.getSelectedItem().toString()));
+        if (txtDrugID.getText().equals("") || boxQuantity.getSelectedIndex() == 0 || txtDrugName.getText().equals("")
+                || txtDrugType.getSelectedIndex() == 0 || txtDose.getText().equals("")
+                || txtSellingPrice.getText().equals("") || boxExp_day.getSelectedIndex() == 0
+                || boxMonth.getSelectedIndex() == 0 || boxYear.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String sql = "UPDATE drugs SET NAME=?, TYPE=?, DOSE=?, SELLING_PRICE=?, QUANTITY=?, EXPIRATION_DATE=? WHERE DRUG_ID=?";
+            try {
+                // Format the expiration date
+                String expirationDate = boxYear.getSelectedItem() + "-"
+                        + String.format("%02d", boxMonth.getSelectedIndex()) + "-"
+                        + String.format("%02d", Integer.parseInt(boxExp_day.getSelectedItem().toString()));
 
-            // Convert the formatted string to java.sql.Date
-            java.sql.Date sqlExpirationDate = java.sql.Date.valueOf(expirationDate);
+                // Convert the formatted string to java.sql.Date
+                java.sql.Date sqlExpirationDate = java.sql.Date.valueOf(expirationDate);
 
-            pre = con.prepareStatement(sql);
-            pre.setString(1, txtDrugName.getText());
-            pre.setString(2, txtDrugType.getSelectedItem().toString());
-            pre.setString(3, txtDose.getText());
-            pre.setDouble(4, Double.parseDouble(txtSelling_price.getText()));
-            pre.setInt(5, Integer.parseInt(boxQuantity.getSelectedItem().toString()));
-            pre.setDate(6, sqlExpirationDate);  // Set the java.sql.Date
-            pre.setString(7, txtDrugID.getText());
+                pre = con.prepareStatement(sql);
+                pre.setString(1, txtDrugName.getText());
+                pre.setString(2, txtDrugType.getSelectedItem().toString());
+                pre.setString(3, txtDose.getText());
+                pre.setDouble(4, Double.parseDouble(txtSellingPrice.getText()));
+                pre.setInt(5, Integer.parseInt(boxQuantity.getSelectedItem().toString()));
+                pre.setDate(6, sqlExpirationDate);  // Set the java.sql.Date
+                pre.setString(7, txtDrugID.getText());
 
-            int updatedRows = pre.executeUpdate();
+                int updatedRows = pre.executeUpdate();
 
-            if (updatedRows > 0) {
-                JOptionPane.showMessageDialog(null, "Drug has been Updated Successfully", "Success Operation", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Drug update failed", "Failed Operation", JOptionPane.ERROR_MESSAGE);
+                if (updatedRows > 0) {
+                    JOptionPane.showMessageDialog(null, "Drug has been Updated Successfully", "Success Operation", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Drug update failed", "Failed Operation", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error updating drug: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error updating drug: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            clear();
         }
-        clear();
-    }
     }//GEN-LAST:event_btnUpdateDrugActionPerformed
 
-    private void populateFieldsFromDatabase(String drugID, boolean isUpdate) {
-    try {
-        String sqlSelect = "SELECT * FROM drugs WHERE DRUG_ID=?";
-        pre = con.prepareStatement(sqlSelect);
-        pre.setString(1, drugID);
-        res = pre.executeQuery();
-
-        if (res.next()) {
-            txtDrugName.setText(res.getString("NAME"));
-            txtDrugType.setSelectedItem(res.getString("TYPE"));
-            txtDose.setText(res.getString("DOSE"));
-            txtSelling_price.setText(res.getString("SELLING_PRICE"));
-
-            String[] dateParts = res.getString("EXPIRATION_DATE").split("-");
-            boxExp_day.setSelectedItem(dateParts[2]);
-            boxMonth.setSelectedItem(dateParts[1]);
-            boxYear.setSelectedItem(dateParts[0]);
-
-            boxQuantity.setSelectedItem(res.getString("QUANTITY"));
-
-            if (isUpdate) {
-                // Postavite vrednost za polje DRUG_ID samo ako je potrebno za ažuriranje
-                txtDrugID.setText(drugID);
-            }
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error populating fields: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
-    
   
+
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         clear();
     }//GEN-LAST:event_btnClearActionPerformed
@@ -500,7 +464,6 @@ public class Drug extends javax.swing.JFrame {
         new Drug_List().setVisible(true);
     }//GEN-LAST:event_btnDrugListActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -564,7 +527,7 @@ public class Drug extends javax.swing.JFrame {
     public javax.swing.JTextField txtDrugID;
     public javax.swing.JTextField txtDrugName;
     public javax.swing.JComboBox<String> txtDrugType;
-    public javax.swing.JTextField txtSelling_price;
+    public javax.swing.JTextField txtSellingPrice;
     // End of variables declaration//GEN-END:variables
 
     private boolean checkdrug_name() {
@@ -585,7 +548,7 @@ public class Drug extends javax.swing.JFrame {
     private void clear() {
         txtDrugName.setText("");
         txtDose.setText("");
-        txtSelling_price.setText("");
+        txtSellingPrice.setText("");
         txtDrugType.setSelectedIndex(0);
         boxExp_day.setSelectedIndex(0);
         boxMonth.setSelectedIndex(0);

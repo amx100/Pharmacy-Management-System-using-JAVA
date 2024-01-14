@@ -17,7 +17,6 @@ public class Drug_List extends javax.swing.JFrame {
     ResultSet res = null;
     String sql1;
     String sql2;
- 
 
     public Drug_List() {
         initComponents();
@@ -195,15 +194,15 @@ public class Drug_List extends javax.swing.JFrame {
 
     private void druglistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_druglistMouseClicked
         int row = druglist.getSelectedRow();
-        String t = druglist.getModel().getValueAt(row, 2).toString();
+        String t = druglist.getModel().getValueAt(row, 0).toString();
         String sql = "select * from drugs where DRUG_ID='" + t + "' ";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
             if (res.next()) {
-                 String DrugId = res.getString("DRUG_ID");
+                String DrugId = res.getString("DRUG_ID");
                 Pharmacy.drug.txtDrugID.setText(DrugId);
-           
+
                 String Name = res.getString("NAME");
                 Pharmacy.drug.txtDrugName.setText(Name);
 
@@ -212,7 +211,10 @@ public class Drug_List extends javax.swing.JFrame {
 
                 String Dose = res.getString("DOSE");
                 Pharmacy.drug.txtDose.setText(Dose);
-
+                
+                String Price = res.getString("SELLING_PRICE");
+                Pharmacy.drug.txtSellingPrice.setText(Price);
+                        
                 String Quantity = res.getString("QUANTITY");
                 Pharmacy.drug.boxQuantity.setSelectedItem(Quantity);
 

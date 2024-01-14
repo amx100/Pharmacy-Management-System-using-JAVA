@@ -44,22 +44,25 @@ public class Customer extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        firstNameField = new javax.swing.JTextField();
-        lastNameField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        customerid = new javax.swing.JLabel();
-        customerId = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnDeleteCustomer = new javax.swing.JButton();
         btnUpdateCustomer = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnAddCustomer = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        firstNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        lastNameField = new javax.swing.JTextField();
         day = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         month = new javax.swing.JComboBox<>();
+        customerid = new javax.swing.JLabel();
         year = new javax.swing.JComboBox<>();
+        customerId = new javax.swing.JTextField();
+        lblUrnc = new javax.swing.JLabel();
+        txtURNC = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         customers = new javax.swing.JTable();
 
@@ -68,21 +71,6 @@ public class Customer extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-
-        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Last Name:");
-
-        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("First Name:");
-
-        customerid.setBackground(new java.awt.Color(51, 51, 51));
-        customerid.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        customerid.setForeground(new java.awt.Color(255, 255, 255));
-        customerid.setText("Customer ID:");
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
@@ -161,6 +149,10 @@ public class Customer extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Customer Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel3.setBackground(new java.awt.Color(51, 51, 51));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -168,83 +160,129 @@ public class Customer extends javax.swing.JFrame {
 
         day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("First Name:");
+
         month.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month:", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
+        customerid.setBackground(new java.awt.Color(51, 51, 51));
+        customerid.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        customerid.setForeground(new java.awt.Color(255, 255, 255));
+        customerid.setText("Customer ID:");
+
         year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year:", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", " " }));
+
+        lblUrnc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblUrnc.setForeground(new java.awt.Color(255, 255, 255));
+        lblUrnc.setText("Unique Register Num Citizen:");
+
+        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Last Name:");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1))
+                            .addGap(115, 115, 115))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(customerid)
+                            .addGap(105, 105, 105)))
+                    .addComponent(lblUrnc))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(firstNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerId)
+                    .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtURNC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(customerid)
+                    .addComponent(customerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUrnc)
+                    .addComponent(txtURNC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel1))
-                                    .addGap(115, 115, 115))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(customerid)
-                                    .addGap(105, 105, 105))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(firstNameField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(customerId)
-                            .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerid)
-                    .addComponent(customerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         customers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "NAME", "LASTNAME", "DOB"
+                "ID", "NAME", "LASTNAME", "DOB", "URNC"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         customers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 customersMouseClicked(evt);
@@ -260,17 +298,20 @@ public class Customer extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(865, 865, 865))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(842, 842, 842))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,21 +332,22 @@ public class Customer extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
-      clear();
+        clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
         if (customerId.getText().equals("") ||  firstNameField.getText().equals("") || lastNameField.getText().equals("") || day.getSelectedIndex() == 0
-                || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0) {
+                || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0 || txtURNC.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                String sql = "INSERT INTO customers ( CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB) VALUES (?, ?, ?, ?)";
+                String sql = "INSERT INTO customers ( CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB,URNC) VALUES (?, ?, ?, ?,?)";
                 try (PreparedStatement pre = con.prepareStatement(sql)) {
                     pre.setString(1,customerId.getText());
                     pre.setString(2, firstNameField.getText());
                     pre.setString(3, lastNameField.getText());
                     pre.setString(4, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
+                    pre.setString(5, txtURNC.getText());
                     pre.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Customer has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     clear();
@@ -349,46 +391,40 @@ public class Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_customersMouseClicked
 
     private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
-//        if (id.getText().equals("")) {
-//            JOptionPane.showMessageDialog(null, "Enter ID You Want to delete", "Missing Information", 2);
-//        } else if (checkid()) {
-//            String sql = "delete from users where USER_ID='" + id.getText() + "' ";
-//            try {
-//                int check = JOptionPane.showConfirmDialog(null, "Are You Sure From Deleting This User");
-//                if (check == 0) {
-//                    pre = con.prepareStatement(sql);
-//                    pre.execute();
-//                    JOptionPane.showMessageDialog(null, "User has been Deleted Successfully", "Success", 1);
-//                }
-//            } catch (Exception e) {
-//                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
-//            }
-//            refresh();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "User is not Found", "Wrong Operation", 2);
-//        }
+        if (customerId.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Enter ID You Want to delete", "Missing Information", 2);
+        } else if (checkid()) {
+            String sql = "delete from customers where CUSTOMER_ID='" + customerId.getText() + "' ";
+            try {
+                int check = JOptionPane.showConfirmDialog(null, "Are You Want Delete This Customer");
+                if (check == 0) {
+                    pre = con.prepareStatement(sql);
+                    pre.execute();
+                    JOptionPane.showMessageDialog(null, "Customer has been Deleted Successfully", "Success", 1);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+            }
+            refresh();
+        } else {
+            JOptionPane.showMessageDialog(null, "Customer is not Found", "Wrong Operation", 2);
+        }
     }//GEN-LAST:event_btnDeleteCustomerActionPerformed
 
     private void btnUpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCustomerActionPerformed
-        if ( customerId.getText().equals("") || firstNameField.getText().equals("") || lastNameField.getText().equals("") || day.getSelectedIndex() == 0
-                || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try {
-                String sql = "UPDATE customers SET FIRST_NAME=?, LAST_NAME=?, DOB=? WHERE CUSTOMER_ID=?";
-                try (PreparedStatement pre = con.prepareStatement(sql)) {
-                    pre.setString(1, firstNameField.getText());
-                    pre.setString(2, lastNameField.getText());
-                    pre.setString(3, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
-                    pre.setString(4,customerId.getText());
-                    pre.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Customer has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    clear();
-                    refresh();
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        String sql = "UPDATE customers SET FIRST_NAME=?, LAST_NAME=?, DOB=?, URNC=? WHERE CUSTOMER_ID=?";
+        try (PreparedStatement pre = con.prepareStatement(sql)) {
+            pre.setString(1, firstNameField.getText());
+            pre.setString(2, lastNameField.getText());
+            pre.setString(3, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
+            pre.setString(4, txtURNC.getText());
+            pre.setString(5, customerId.getText());
+            pre.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Customer has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clear();
+            refresh();
+        } catch (SQLException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnUpdateCustomerActionPerformed
 
@@ -431,6 +467,21 @@ public class Customer extends javax.swing.JFrame {
         });
     }
 
+    private boolean checkid() {
+        boolean check = false;
+        String sql = "select CUSTOMER_ID from customers where CUSTOMER_ID='" + customerId.getText() + "' ";
+        try {
+            pre = con.prepareStatement(sql);
+            res = pre.executeQuery();
+            if (res.next()) {
+                check = true;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+        return check;
+    }
+
     private void clear() {
         customerId.setText("");
         firstNameField.setText("");
@@ -441,7 +492,7 @@ public class Customer extends javax.swing.JFrame {
     }
 
     private void refresh() {
-        String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB from customers";
+        String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB,URNC from customers";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
@@ -467,10 +518,13 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTextField lastNameField;
+    private javax.swing.JLabel lblUrnc;
     public static javax.swing.JComboBox<String> month;
+    public static javax.swing.JTextField txtURNC;
     public static javax.swing.JComboBox<String> year;
     // End of variables declaration//GEN-END:variables
 }

@@ -472,25 +472,25 @@ public class User extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteuserActionPerformed
 
     private void updateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateuserActionPerformed
-       if (txtUserId.getText().equals("") || txtUserName.getText().equals("") || day.getSelectedIndex() == 0
-            || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0) {
-        JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", 2);
-    } else {
-       
-        String sql = "UPDATE users SET NAME=?, DOB=?, TYPE=? WHERE USER_ID=?";
-        try {
-            pre = con.prepareStatement(sql);
-            pre.setString(1, txtUserName.getText());
-            pre.setString(2, (day.getSelectedIndex() + 1) + "-" + (month.getSelectedIndex() + 1) + "-" + year.getSelectedItem());
-            pre.setString(3, boxType.getSelectedItem().toString());
-            pre.setString(4, txtUserId.getText());
-            pre.execute();
-            JOptionPane.showMessageDialog(null, "User has been updated Successfully", "Success", 1);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        if (txtUserId.getText().equals("") || txtUserName.getText().equals("") || day.getSelectedIndex() == 0
+                || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", 2);
+        } else {
+
+            String sql = "UPDATE users SET NAME=?, DOB=?, TYPE=? WHERE USER_ID=?";
+            try {
+                pre = con.prepareStatement(sql);
+                pre.setString(1, txtUserName.getText());
+                pre.setString(2, (day.getSelectedIndex() + 1) + "-" + (month.getSelectedIndex() + 1) + "-" + year.getSelectedItem());
+                pre.setString(3, boxType.getSelectedItem().toString());
+                pre.setString(4, txtUserId.getText());
+                pre.execute();
+                JOptionPane.showMessageDialog(null, "User has been updated Successfully", "Success", 1);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+            }
+            refresh();
         }
-        refresh();
-    }
     }//GEN-LAST:event_updateuserActionPerformed
 
     private void usersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usersMouseClicked

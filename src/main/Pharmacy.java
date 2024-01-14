@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import static main.Login.txtName;
 
+
 public class Pharmacy extends javax.swing.JFrame {
 
     Connection con = null;
@@ -437,10 +438,10 @@ public class Pharmacy extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1233, 646));
+        setSize(new java.awt.Dimension(1233, 635));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -464,7 +465,6 @@ public class Pharmacy extends javax.swing.JFrame {
     private void btnSearchDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDrugActionPerformed
         new Search_Drug().setVisible(true);
     }//GEN-LAST:event_btnSearchDrugActionPerformed
-
 
     private void btnUpdateDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDrugActionPerformed
         drug.setVisible(true);
@@ -604,6 +604,8 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCustomer;
@@ -643,6 +645,8 @@ public class Pharmacy extends javax.swing.JFrame {
     public static javax.swing.JLabel today;
     // End of variables declaration//GEN-END:variables
 
+    
+     
     private void showDate() {
         d = new Date();
         dd = new SimpleDateFormat("dd-MM-yyyy");
@@ -797,9 +801,9 @@ public class Pharmacy extends javax.swing.JFrame {
     }
 
     private void enterdrugdetails() {
+        btnDrugdetails.setEnabled(false);
         btnUser.setEnabled(true);
         btnDrugs.setEnabled(true);
-        btnDrugdetails.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
         btnSettings.setEnabled(true);
 

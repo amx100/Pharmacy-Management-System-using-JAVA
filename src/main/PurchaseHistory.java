@@ -49,6 +49,7 @@ public class PurchaseHistory extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
+        purchase_historyList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         purchase_historyList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
