@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static main.Login.txtName;
-
 
 public class Pharmacy extends javax.swing.JFrame {
 
@@ -24,9 +24,14 @@ public class Pharmacy extends javax.swing.JFrame {
     User user;
     static Drug drug;
     static Customer customer;
+    static SupplierPurchase supplierPurchase;
+    static Supplier supplier;
+    static BuyDrug buydrug;
+    static PurchaseHistory purchaseHistory;
+    static Capital capital;
+    static FinancialTransaction transaction;
     Date d;
     SimpleDateFormat dd;
-    Login l = new Login();
 
     public Pharmacy() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Pharmacy.class.getResource("/img/Untitled.png")));
@@ -37,7 +42,15 @@ public class Pharmacy extends javax.swing.JFrame {
         user = new User();
         drug = new Drug();
         customer = new Customer();
-        lbl_LoginAs.setText(l.NAME);
+        supplier = new Supplier();
+        buydrug = new BuyDrug();
+        purchaseHistory = new PurchaseHistory();
+        supplierPurchase = new SupplierPurchase();
+        capital = new Capital();
+        transaction = new FinancialTransaction();
+        lbl_LoginAs.setText(Login.NAME);
+        lbl_Type.setText(Login.TYPE);
+        updateCapitalLabelOnOtherForm();
 
     }
 
@@ -51,28 +64,24 @@ public class Pharmacy extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnUser = new javax.swing.JButton();
-        btnDrugs = new javax.swing.JButton();
+        btnUserDet = new javax.swing.JButton();
+        btnDrugsDet = new javax.swing.JButton();
         btnAddUser = new javax.swing.JButton();
-        btnDeleteUser = new javax.swing.JButton();
-        btnUpdateUser = new javax.swing.JButton();
         btnAddDrug = new javax.swing.JButton();
-        btnDeleteDrug = new javax.swing.JButton();
-        btnUpdateDrug = new javax.swing.JButton();
         btnSearchDrug = new javax.swing.JButton();
-        btnDrugdetails = new javax.swing.JButton();
-        btnSettings = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
-        btnDrugList = new javax.swing.JButton();
         btnExpiredDrugs = new javax.swing.JButton();
         btnAlmostF = new javax.swing.JButton();
         btnCustomerDet = new javax.swing.JButton();
         btnPurchaseDet = new javax.swing.JButton();
         btnPurchaseH = new javax.swing.JButton();
-        btnUpdateCustomer = new javax.swing.JButton();
         btnCreateBill = new javax.swing.JButton();
         btnAddCustomer = new javax.swing.JButton();
-        btnDeleteCustomer = new javax.swing.JButton();
+        btnSupplierDet = new javax.swing.JButton();
+        btnAddSupplierPurchase = new javax.swing.JButton();
+        btnFinancialTransaction = new javax.swing.JButton();
+        btnAddCapital = new javax.swing.JButton();
+        btnCapitalDet = new javax.swing.JButton();
+        btnAddSupplier = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         today = new javax.swing.JLabel();
@@ -83,8 +92,13 @@ public class Pharmacy extends javax.swing.JFrame {
         time = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        lblType = new javax.swing.JLabel();
         lbl_LoginAs = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        lbl_Type = new javax.swing.JLabel();
+        btnSettings = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        lblCurrentCapitalOnOtherForm = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pharmacy Management");
@@ -93,25 +107,25 @@ public class Pharmacy extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(null);
 
-        btnUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnUser.setText("User");
-        btnUser.addActionListener(new java.awt.event.ActionListener() {
+        btnUserDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnUserDet.setText("User Details");
+        btnUserDet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUserActionPerformed(evt);
+                btnUserDetActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUser);
-        btnUser.setBounds(1050, 100, 140, 34);
+        jPanel1.add(btnUserDet);
+        btnUserDet.setBounds(980, 100, 140, 34);
 
-        btnDrugs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDrugs.setText("Drugs");
-        btnDrugs.addActionListener(new java.awt.event.ActionListener() {
+        btnDrugsDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDrugsDet.setText("Drugs Details");
+        btnDrugsDet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDrugsActionPerformed(evt);
+                btnDrugsDetActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDrugs);
-        btnDrugs.setBounds(860, 100, 150, 34);
+        jPanel1.add(btnDrugsDet);
+        btnDrugsDet.setBounds(640, 100, 150, 34);
 
         btnAddUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddUser.setText("Add User");
@@ -121,27 +135,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddUser);
-        btnAddUser.setBounds(1050, 150, 140, 22);
-
-        btnDeleteUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDeleteUser.setText("Delete User");
-        btnDeleteUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteUserActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDeleteUser);
-        btnDeleteUser.setBounds(1050, 190, 140, 22);
-
-        btnUpdateUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnUpdateUser.setText("Update User");
-        btnUpdateUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateUserActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdateUser);
-        btnUpdateUser.setBounds(1050, 230, 140, 22);
+        btnAddUser.setBounds(980, 150, 140, 22);
 
         btnAddDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddDrug.setText("Add Drug");
@@ -151,27 +145,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddDrug);
-        btnAddDrug.setBounds(860, 150, 150, 22);
-
-        btnDeleteDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDeleteDrug.setText("Delete Drug");
-        btnDeleteDrug.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteDrugActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDeleteDrug);
-        btnDeleteDrug.setBounds(860, 190, 150, 22);
-
-        btnUpdateDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnUpdateDrug.setText("Update Drug");
-        btnUpdateDrug.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateDrugActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdateDrug);
-        btnUpdateDrug.setBounds(860, 230, 150, 22);
+        btnAddDrug.setBounds(640, 150, 150, 22);
 
         btnSearchDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSearchDrug.setText("Search Drug");
@@ -181,47 +155,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSearchDrug);
-        btnSearchDrug.setBounds(860, 270, 150, 22);
-
-        btnDrugdetails.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDrugdetails.setText("Drug Details");
-        btnDrugdetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDrugdetailsActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDrugdetails);
-        btnDrugdetails.setBounds(670, 100, 150, 34);
-
-        btnSettings.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnSettings.setText("Settings");
-        btnSettings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSettingsActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnSettings);
-        btnSettings.setBounds(10, 102, 141, 34);
-
-        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnLogout);
-        btnLogout.setBounds(10, 140, 141, 22);
-
-        btnDrugList.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnDrugList.setText("Drugs_List");
-        btnDrugList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDrugListActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDrugList);
-        btnDrugList.setBounds(670, 230, 150, 21);
+        btnSearchDrug.setBounds(640, 240, 150, 22);
 
         btnExpiredDrugs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnExpiredDrugs.setText("Expired Drugs");
@@ -231,17 +165,17 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnExpiredDrugs);
-        btnExpiredDrugs.setBounds(670, 150, 150, 22);
+        btnExpiredDrugs.setBounds(640, 180, 150, 22);
 
         btnAlmostF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnAlmostF.setText("Almost_Finished");
+        btnAlmostF.setText("Almost Finished");
         btnAlmostF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlmostFActionPerformed(evt);
             }
         });
         jPanel1.add(btnAlmostF);
-        btnAlmostF.setBounds(670, 190, 150, 22);
+        btnAlmostF.setBounds(640, 210, 150, 22);
 
         btnCustomerDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCustomerDet.setText("Customer Details");
@@ -251,7 +185,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCustomerDet);
-        btnCustomerDet.setBounds(290, 100, 150, 34);
+        btnCustomerDet.setBounds(300, 100, 150, 34);
 
         btnPurchaseDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnPurchaseDet.setText("Purchase Details");
@@ -261,7 +195,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPurchaseDet);
-        btnPurchaseDet.setBounds(480, 100, 150, 34);
+        btnPurchaseDet.setBounds(470, 100, 150, 34);
 
         btnPurchaseH.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnPurchaseH.setText("Purchase History");
@@ -271,27 +205,17 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPurchaseH);
-        btnPurchaseH.setBounds(480, 190, 150, 22);
-
-        btnUpdateCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnUpdateCustomer.setText("Update Customer");
-        btnUpdateCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateCustomerActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnUpdateCustomer);
-        btnUpdateCustomer.setBounds(290, 230, 150, 22);
+        btnPurchaseH.setBounds(470, 180, 150, 22);
 
         btnCreateBill.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnCreateBill.setText("Create bill");
+        btnCreateBill.setText("Create Bill");
         btnCreateBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateBillActionPerformed(evt);
             }
         });
         jPanel1.add(btnCreateBill);
-        btnCreateBill.setBounds(480, 150, 150, 22);
+        btnCreateBill.setBounds(470, 150, 150, 22);
 
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddCustomer.setText("Add Customer");
@@ -301,22 +225,72 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddCustomer);
-        btnAddCustomer.setBounds(290, 150, 150, 22);
+        btnAddCustomer.setBounds(300, 150, 150, 22);
 
-        btnDeleteCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDeleteCustomer.setText("Delete Customer");
-        btnDeleteCustomer.addActionListener(new java.awt.event.ActionListener() {
+        btnSupplierDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSupplierDet.setText("Supplier Details");
+        btnSupplierDet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteCustomerActionPerformed(evt);
+                btnSupplierDetActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDeleteCustomer);
-        btnDeleteCustomer.setBounds(290, 190, 150, 22);
+        jPanel1.add(btnSupplierDet);
+        btnSupplierDet.setBounds(140, 100, 150, 34);
+
+        btnAddSupplierPurchase.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddSupplierPurchase.setText("Make a Deal");
+        btnAddSupplierPurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSupplierPurchaseActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddSupplierPurchase);
+        btnAddSupplierPurchase.setBounds(140, 180, 150, 22);
+
+        btnFinancialTransaction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnFinancialTransaction.setText("Transactions");
+        btnFinancialTransaction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinancialTransactionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnFinancialTransaction);
+        btnFinancialTransaction.setBounds(820, 180, 140, 22);
+
+        btnAddCapital.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddCapital.setText("Add Capital");
+        btnAddCapital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCapitalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddCapital);
+        btnAddCapital.setBounds(820, 150, 140, 22);
+
+        btnCapitalDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCapitalDet.setText("Capital Details");
+        btnCapitalDet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapitalDetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCapitalDet);
+        btnCapitalDet.setBounds(820, 100, 140, 34);
+
+        btnAddSupplier.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAddSupplier.setText("Add Supplier");
+        btnAddSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddSupplierActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddSupplier);
+        btnAddSupplier.setBounds(140, 150, 150, 22);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/capsule.pill.health.medicine (1).jpg"))); // NOI18N
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(0, 80, 1220, 560);
+        jLabel14.setBounds(0, 80, 1311, 550);
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -328,12 +302,14 @@ public class Pharmacy extends javax.swing.JFrame {
         jLabel3.setText("Today");
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pharmacy Management");
 
         jLabel4.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("(Administration)");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Administration");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Time");
@@ -343,7 +319,7 @@ public class Pharmacy extends javax.swing.JFrame {
         time.setText("00:00:00");
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Apps-session-logout-icon_1.png"))); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-power-off-65.png"))); // NOI18N
         btnExit.setToolTipText("Logout");
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -354,100 +330,152 @@ public class Pharmacy extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(51, 51, 51));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Login As:");
+        jLabel5.setText("Welcome");
+
+        lblType.setBackground(new java.awt.Color(51, 51, 51));
+        lblType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblType.setText("Status:");
 
         lbl_LoginAs.setBackground(new java.awt.Color(255, 255, 255));
         lbl_LoginAs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbl_LoginAs.setForeground(new java.awt.Color(153, 0, 0));
         lbl_LoginAs.setText(" ");
 
+        lbl_Type.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_Type.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbl_Type.setForeground(new java.awt.Color(153, 0, 0));
+        lbl_Type.setText(" ");
+
+        btnSettings.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-settings-50 (5).png"))); // NOI18N
+        btnSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSettingsActionPerformed(evt);
+            }
+        });
+
+        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-logout-30.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Capital:");
+
+        lblCurrentCapitalOnOtherForm.setBackground(new java.awt.Color(51, 51, 51));
+        lblCurrentCapitalOnOtherForm.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        lblCurrentCapitalOnOtherForm.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_LoginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogout)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblType, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_LoginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(83, 83, 83)))
+                        .addGap(115, 115, 115))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jLabel3))
+                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
+                        .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lbl_LoginAs))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(time)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))
-                        .addGap(20, 20, 20))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(lbl_LoginAs))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_Type)
+                                    .addComponent(lblType))))
+                        .addGap(21, 21, 21))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(31, 31, 31))))
         );
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 0, 1220, 80);
-
-        setJMenuBar(jMenuBar1);
+        jPanel3.setBounds(0, 0, 1310, 80);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1217, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1299, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1233, 635));
+        setSize(new java.awt.Dimension(1315, 635));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDrugListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrugListActionPerformed
-        new Drug_List().setVisible(true);
-    }//GEN-LAST:event_btnDrugListActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         this.dispose();
@@ -458,65 +486,26 @@ public class Pharmacy extends javax.swing.JFrame {
         settings();
     }//GEN-LAST:event_btnSettingsActionPerformed
 
-    private void btnDrugdetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrugdetailsActionPerformed
-        enterdrugdetails();
-    }//GEN-LAST:event_btnDrugdetailsActionPerformed
-
     private void btnSearchDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDrugActionPerformed
         new Search_Drug().setVisible(true);
     }//GEN-LAST:event_btnSearchDrugActionPerformed
 
-    private void btnUpdateDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateDrugActionPerformed
-        drug.setVisible(true);
-        drug.btnAdddrug.setEnabled(false);
-        drug.btnDeleteDrug.setEnabled(false);
-        drug.btnUpdateDrug.setEnabled(true);
-    }//GEN-LAST:event_btnUpdateDrugActionPerformed
-
-    private void btnDeleteDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDrugActionPerformed
-        drug.setVisible(true);
-        drug.btnUpdateDrug.setEnabled(false);
-        drug.btnAdddrug.setEnabled(false);
-        drug.btnDeleteDrug.setEnabled(true);
-    }//GEN-LAST:event_btnDeleteDrugActionPerformed
-
     private void btnAddDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDrugActionPerformed
         drug.setVisible(true);
-        drug.btnUpdateDrug.setEnabled(false);
-        drug.btnDeleteDrug.setEnabled(false);
-        drug.btnAdddrug.setEnabled(true);
     }//GEN-LAST:event_btnAddDrugActionPerformed
-
-    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
-        user.setVisible(true);
-        user.deleteuser.setEnabled(false);
-        user.adduser.setEnabled(false);
-        user.updateuser.setEnabled(true);
-        user.txtUserId.setEditable(false);
-    }//GEN-LAST:event_btnUpdateUserActionPerformed
-
-    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
-        user.setVisible(true);
-        user.adduser.setEnabled(false);
-        user.updateuser.setEnabled(false);
-        user.deleteuser.setEnabled(true);
-    }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         user.setVisible(true);
-        user.deleteuser.setEnabled(false);
-        user.updateuser.setEnabled(false);
-        user.adduser.setEnabled(true);
     }//GEN-LAST:event_btnAddUserActionPerformed
 
-    private void btnDrugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrugsActionPerformed
+    private void btnDrugsDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrugsDetActionPerformed
         enterdrugs();
-    }//GEN-LAST:event_btnDrugsActionPerformed
+    }//GEN-LAST:event_btnDrugsDetActionPerformed
 
-    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+    private void btnUserDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDetActionPerformed
         enteruser();
 
-    }//GEN-LAST:event_btnUserActionPerformed
+    }//GEN-LAST:event_btnUserDetActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
@@ -540,34 +529,54 @@ public class Pharmacy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPurchaseDetActionPerformed
 
     private void btnPurchaseHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseHActionPerformed
-        new PurchaseHistory().setVisible(true);
+        purchaseHistory.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        purchaseHistory.setVisible(true);
     }//GEN-LAST:event_btnPurchaseHActionPerformed
 
-    private void btnUpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCustomerActionPerformed
-        customer.setVisible(true);
-        customer.btnDeleteCustomer.setEnabled(false);
-        customer.btnUpdateCustomer.setEnabled(true);
-        customer.btnAddCustomer.setEnabled(false);
-    }//GEN-LAST:event_btnUpdateCustomerActionPerformed
-
     private void btnCreateBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBillActionPerformed
-        new BuyDrug().setVisible(true);
+        buydrug.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        buydrug.setVisible(true);
     }//GEN-LAST:event_btnCreateBillActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
-        customer.setVisible(true);
-        customer.btnDeleteCustomer.setEnabled(false);
-        customer.btnUpdateCustomer.setEnabled(false);
-        customer.btnAddCustomer.setEnabled(true);
 
+        customer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        customer.setVisible(true);
     }//GEN-LAST:event_btnAddCustomerActionPerformed
 
-    private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
-        customer.setVisible(true);
-        customer.btnDeleteCustomer.setEnabled(true);
-        customer.btnUpdateCustomer.setEnabled(false);
-        customer.btnAddCustomer.setEnabled(false);
-    }//GEN-LAST:event_btnDeleteCustomerActionPerformed
+    private void btnSupplierDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierDetActionPerformed
+        entersupplier();
+    }//GEN-LAST:event_btnSupplierDetActionPerformed
+
+    private void btnAddSupplierPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierPurchaseActionPerformed
+        supplierPurchase.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        supplierPurchase.setVisible(true);
+    }//GEN-LAST:event_btnAddSupplierPurchaseActionPerformed
+
+    private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
+        supplier.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        supplier.setVisible(true);
+    }//GEN-LAST:event_btnAddSupplierActionPerformed
+
+    private void btnCapitalDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapitalDetActionPerformed
+        entercapital();
+    }//GEN-LAST:event_btnCapitalDetActionPerformed
+
+    private void btnFinancialTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinancialTransactionActionPerformed
+        transaction.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        transaction.setVisible(true);
+    }//GEN-LAST:event_btnFinancialTransactionActionPerformed
+
+    private void btnAddCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCapitalActionPerformed
+      capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);        
+    }//GEN-LAST:event_btnAddCapitalActionPerformed
+
+    private void updateCapitalLabelOnOtherForm() {
+        Capital capitalForm = new Capital();
+        double currentCapital = capitalForm.getCurrentCapital();
+        lblCurrentCapitalOnOtherForm.setText("" + currentCapital);
+    }
 
     /**
      * @param args the command line arguments
@@ -604,49 +613,47 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddCapital;
     private javax.swing.JButton btnAddCustomer;
     private javax.swing.JButton btnAddDrug;
+    private javax.swing.JButton btnAddSupplier;
+    private javax.swing.JButton btnAddSupplierPurchase;
     private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnAlmostF;
+    public javax.swing.JButton btnCapitalDet;
     private javax.swing.JButton btnCreateBill;
     private javax.swing.JButton btnCustomerDet;
-    private javax.swing.JButton btnDeleteCustomer;
-    private javax.swing.JButton btnDeleteDrug;
-    private javax.swing.JButton btnDeleteUser;
-    private javax.swing.JButton btnDrugList;
-    private javax.swing.JButton btnDrugdetails;
-    private javax.swing.JButton btnDrugs;
+    private javax.swing.JButton btnDrugsDet;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnExpiredDrugs;
+    private javax.swing.JButton btnFinancialTransaction;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPurchaseDet;
     private javax.swing.JButton btnPurchaseH;
     private javax.swing.JButton btnSearchDrug;
     private javax.swing.JButton btnSettings;
-    private javax.swing.JButton btnUpdateCustomer;
-    private javax.swing.JButton btnUpdateDrug;
-    private javax.swing.JButton btnUpdateUser;
-    public javax.swing.JButton btnUser;
+    private javax.swing.JButton btnSupplierDet;
+    public javax.swing.JButton btnUserDet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    public static javax.swing.JLabel lblCurrentCapitalOnOtherForm;
+    private javax.swing.JLabel lblType;
     private javax.swing.JLabel lbl_LoginAs;
+    private javax.swing.JLabel lbl_Type;
     public static javax.swing.JLabel time;
     public static javax.swing.JLabel today;
     // End of variables declaration//GEN-END:variables
 
-    
-     
     private void showDate() {
         d = new Date();
         dd = new SimpleDateFormat("dd-MM-yyyy");
@@ -663,197 +670,193 @@ public class Pharmacy extends javax.swing.JFrame {
     }
 
     private void buttonvis() {
+
         btnAddUser.setVisible(false);
-        btnDeleteUser.setVisible(false);
-        btnUpdateUser.setVisible(false);
-
         btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
         btnSearchDrug.setVisible(false);
-
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-        btnDrugList.setVisible(false);
-
         btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
-
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
-
         btnLogout.setVisible(false);
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
+
     }
 
-    private void uservis() {
-        btnAddUser.setVisible(true);
-        btnDeleteUser.setVisible(true);
-        btnUpdateUser.setVisible(true);
-        btnDrugList.setVisible(false);
+    private void entersupplier() {
+        btnSupplierDet.setEnabled(false);
+        btnCapitalDet.setEnabled(true);
+        btnCustomerDet.setEnabled(true);
+        btnPurchaseDet.setEnabled(true);
+        btnUserDet.setEnabled(true);
+        btnSettings.setEnabled(true);
+        btnExit.setEnabled(true);
+        btnAddSupplier.setVisible(true);
+        btnAddSupplierPurchase.setVisible(true);
+        
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
+        btnAddUser.setVisible(false);
+        btnAddDrug.setVisible(false);
+        btnSearchDrug.setVisible(false);
+        btnExpiredDrugs.setVisible(false);
+        btnAlmostF.setVisible(false);
+        btnAddCustomer.setVisible(false);
+        btnCreateBill.setVisible(false);
+        btnPurchaseH.setVisible(false);
+        btnLogout.setVisible(false);
+
+    }
+
+    private void entercapital() {
+        btnCapitalDet.setEnabled(false);
+        btnSupplierDet.setVisible(true);
+        btnCustomerDet.setVisible(true);
+        btnPurchaseDet.setVisible(true);
+        btnUserDet.setEnabled(true);
+        btnSettings.setVisible(true);
+        btnExit.setVisible(true);
+        btnAddCapital.setVisible(true);
+        btnFinancialTransaction.setVisible(true);
+        btnAddUser.setVisible(false);
+        btnAddUser.setVisible(false);
+        btnAddDrug.setVisible(false);
+        btnSearchDrug.setVisible(false);
+        btnExpiredDrugs.setVisible(false);
+        btnAlmostF.setVisible(false);
+        btnAddCustomer.setVisible(false);
+        btnCreateBill.setVisible(false);
+        btnPurchaseH.setVisible(false);
+        btnLogout.setVisible(false);
     }
 
     private void enteruser() {
-        btnUser.setEnabled(false);
-        btnDrugs.setEnabled(true);
-        btnDrugdetails.setEnabled(true);
+        btnUserDet.setEnabled(false);
+        btnDrugsDet.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
         btnCustomerDet.setEnabled(true);
-
+        btnSupplierDet.setEnabled(true);
+        btnCapitalDet.setEnabled(true);
         btnSettings.setEnabled(true);
-
         btnAddUser.setVisible(true);
-        btnDeleteUser.setVisible(true);
-        btnUpdateUser.setVisible(true);
-
         btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
         btnSearchDrug.setVisible(false);
-
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
         btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
-
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-        btnDrugList.setVisible(false);
-
         btnLogout.setVisible(false);
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
+
     }
 
     private void enterdrugs() {
-        btnDrugs.setEnabled(false);
-        btnUser.setEnabled(true);
-        btnDrugdetails.setEnabled(true);
+        btnDrugsDet.setEnabled(false);
+        btnUserDet.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
         btnSettings.setEnabled(true);
+        btnCapitalDet.setEnabled(true);
+        btnSupplierDet.setEnabled(true);
 
-        btnAddUser.setVisible(false);
-        btnDeleteUser.setVisible(false);
-        btnUpdateUser.setVisible(false);
-
-        btnAddDrug.setVisible(true);
-        btnDeleteDrug.setVisible(true);
-        btnUpdateDrug.setVisible(true);
         btnSearchDrug.setVisible(true);
-        btnDrugList.setVisible(false);
-        btnExpiredDrugs.setVisible(false);
-        btnAlmostF.setVisible(false);
+        btnExpiredDrugs.setVisible(true);
+        btnAddDrug.setVisible(true);
+        btnAddUser.setVisible(false);
 
+        btnAlmostF.setVisible(true);
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
+
         btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
 
         btnLogout.setVisible(false);
+
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
+
     }
 
     private void entercustomer() {
         btnCustomerDet.setEnabled(false);
-        btnDrugdetails.setEnabled(true);
-        btnDrugs.setEnabled(true);
-        btnUser.setEnabled(true);
+
+        btnDrugsDet.setEnabled(true);
+        btnUserDet.setEnabled(true);
         btnSettings.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
+        btnCapitalDet.setEnabled(true);
 
         btnAddCustomer.setVisible(true);
-        btnDeleteCustomer.setVisible(true);
-        btnUpdateCustomer.setVisible(true);
 
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
         btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
+
         btnSearchDrug.setVisible(false);
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-        btnDrugList.setVisible(false);
+
         btnLogout.setVisible(false);
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnSupplierDet.setEnabled(true);
+
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
     }
 
     private void enterpurchase() {
         btnPurchaseDet.setEnabled(false);
-        btnDrugdetails.setEnabled(true);
-        btnDrugs.setEnabled(true);
-        btnUser.setEnabled(true);
+        btnDrugsDet.setEnabled(true);
+        btnUserDet.setEnabled(true);
         btnCustomerDet.setEnabled(true);
         btnSettings.setEnabled(true);
-
         btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
-
         btnCreateBill.setVisible(true);
         btnPurchaseH.setVisible(true);
         btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
         btnSearchDrug.setVisible(false);
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-        btnDrugList.setVisible(false);
         btnLogout.setVisible(false);
-    }
-
-    private void enterdrugdetails() {
-        btnDrugdetails.setEnabled(false);
-        btnUser.setEnabled(true);
-        btnDrugs.setEnabled(true);
-        btnPurchaseDet.setEnabled(true);
-        btnSettings.setEnabled(true);
-
-        btnAddUser.setVisible(false);
-        btnDeleteUser.setVisible(false);
-        btnUpdateUser.setVisible(false);
-
-        btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
-        btnSearchDrug.setVisible(false);
-        btnDrugList.setVisible(true);
-        btnExpiredDrugs.setVisible(true);
-        btnAlmostF.setVisible(true);
-
-        btnCreateBill.setVisible(false);
-        btnPurchaseH.setVisible(false);
-        btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
-
-        btnLogout.setVisible(false);
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnSupplierDet.setEnabled(true);
+        btnCapitalDet.setEnabled(true);
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
     }
 
     private void settings() {
         btnSettings.setEnabled(false);
-        btnUser.setEnabled(true);
-        btnDrugs.setEnabled(true);
+        btnUserDet.setEnabled(true);
+        btnDrugsDet.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
         btnCustomerDet.setEnabled(true);
-        btnDrugdetails.setEnabled(true);
-        btnDrugList.setVisible(false);
         btnAddUser.setVisible(false);
-        btnDeleteUser.setVisible(false);
-        btnUpdateUser.setVisible(false);
-
         btnAddDrug.setVisible(false);
-        btnDeleteDrug.setVisible(false);
-        btnUpdateDrug.setVisible(false);
         btnSearchDrug.setVisible(false);
-
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
         btnAddCustomer.setVisible(false);
-        btnDeleteCustomer.setVisible(false);
-        btnUpdateCustomer.setVisible(false);
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-
         btnLogout.setVisible(true);
+        btnAddSupplier.setVisible(false);
+        btnAddSupplierPurchase.setVisible(false);
+        btnSupplierDet.setEnabled(true);
+        btnCapitalDet.setEnabled(true);
+        btnAddCapital.setVisible(false);
+        btnFinancialTransaction.setVisible(false);
     }
 
 }
