@@ -8,10 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
-import static main.Customer.customerId;
-import static main.Customer.firstNameField;
-import static main.Customer.lastNameField;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -50,13 +48,28 @@ public class BuyDrug extends javax.swing.JFrame {
         customerId = new javax.swing.JTextField();
         txtDrugID = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        quantityBox = new javax.swing.JComboBox<>();
+        boxQuantity = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        btnPurchase = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        customers = new javax.swing.JTable();
+        btnAddPurchase = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnRefund = new javax.swing.JButton();
+        txtPurchaseID = new javax.swing.JTextField();
+        customerid1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        drugid = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        name = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         druglist = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCustomers = new javax.swing.JTable();
+        txtCustomerIDSearch = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtCustomerUrncSearch = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         purchaseHistoryTable = new javax.swing.JTable();
 
@@ -72,26 +85,45 @@ public class BuyDrug extends javax.swing.JFrame {
         customerid.setBackground(new java.awt.Color(51, 51, 51));
         customerid.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         customerid.setForeground(new java.awt.Color(255, 255, 255));
-        customerid.setText("CustomerId");
+        customerid.setText("Customer ID");
 
         jLabel8.setBackground(new java.awt.Color(51, 51, 51));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Drug_ID  : ");
+        jLabel8.setText("Drug ID  ");
 
-        quantityBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Quantity", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100" }));
+        boxQuantity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Quantity", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100" }));
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Quantity");
 
-        btnPurchase.setText("Generate Bill");
-        btnPurchase.addActionListener(new java.awt.event.ActionListener() {
+        btnAddPurchase.setText("Generate Bill");
+        btnAddPurchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPurchaseActionPerformed(evt);
+                btnAddPurchaseActionPerformed(evt);
             }
         });
+
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        btnRefund.setText("Refund");
+        btnRefund.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefundActionPerformed(evt);
+            }
+        });
+
+        customerid1.setBackground(new java.awt.Color(51, 51, 51));
+        customerid1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        customerid1.setForeground(new java.awt.Color(255, 255, 255));
+        customerid1.setText("Purchase ID");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,25 +132,33 @@ public class BuyDrug extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(customerid)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantityBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDrugID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(customerId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1)
+                            .addComponent(customerid1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPurchaseID)
+                            .addComponent(boxQuantity, javax.swing.GroupLayout.Alignment.TRAILING, 0, 145, Short.MAX_VALUE)
+                            .addComponent(txtDrugID, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(customerId, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnPurchase)))
+                        .addComponent(btnRefund)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addComponent(btnAddPurchase)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPurchaseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(customerid1))
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerid)
                     .addComponent(customerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -128,38 +168,39 @@ public class BuyDrug extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quantityBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boxQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(btnPurchase)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnClear)
+                        .addComponent(btnRefund))
+                    .addComponent(btnAddPurchase))
                 .addContainerGap())
         );
 
-        customers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "NAME", "LAST NAME", "DOB", "URNC"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Drug_ID : ");
+
+        drugid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                drugidKeyReleased(evt);
             }
         });
-        customers.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                customersMouseClicked(evt);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Name : ");
+
+        name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameKeyReleased(evt);
             }
         });
-        jScrollPane1.setViewportView(customers);
 
         druglist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         druglist.setModel(new javax.swing.table.DefaultTableModel(
@@ -189,6 +230,124 @@ public class BuyDrug extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(druglist);
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
+        );
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+
+        tblCustomers.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "NAME", "LAST NAME", "DOB", "URNC"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCustomersMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblCustomers);
+
+        txtCustomerIDSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCustomerIDSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("URNC:");
+
+        txtCustomerUrncSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCustomerUrncSearchKeyReleased(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Customer ID");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCustomerIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCustomerUrncSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCustomerIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtCustomerUrncSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+
+        purchaseHistoryTable.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         purchaseHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -215,49 +374,62 @@ public class BuyDrug extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(purchaseHistoryTable);
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
+                        .addGap(15, 15, 15)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,79 +456,43 @@ public class BuyDrug extends javax.swing.JFrame {
 
     }//GEN-LAST:event_druglistMouseClicked
 
-    private void btnPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseActionPerformed
-        if (customerId.getText().equals("") || txtDrugID.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
+    private void btnAddPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPurchaseActionPerformed
+  
+
+        if (customerId.getText().equals("")|| txtDrugID.getText().equals("") || boxQuantity.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(null, "Complete Purchase Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                // Pretpostavljamo da imate konekciju (Connection) prethodno uspostavljenu
-                // Pretpostavljamo da imate JTextField objekte nazvane txtCustomerId, txtDrugID
-                String sqlSelect = "SELECT SELLING_PRICE, QUANTITY FROM pharmacy.drugs WHERE DRUG_ID = ?";
-                try (PreparedStatement selectStatement = con.prepareStatement(sqlSelect)) {
-                    int drugId = Integer.parseInt(txtDrugID.getText());
-                    selectStatement.setInt(1, drugId);
+                String sql = "INSERT INTO purchase_history (CUSTOMER_ID, DRUG_ID, PURCHASE_DATE, QUANTITY_SOLD) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement pre = con.prepareStatement(sql)) {
+                    pre.setString(1, customerId.getText());
+                    pre.setString(2, txtDrugID.getText());
 
-                    // Izvršavanje SELECT upita za dohvatanje cene leka i dostupne količine
-                    try (ResultSet resultSet = selectStatement.executeQuery()) {
-                        if (resultSet.next()) {
-                            double sellingPrice = resultSet.getDouble("SELLING_PRICE");
-                            int availableQuantity = resultSet.getInt("QUANTITY");
+                    Timestamp purchaseDate = new Timestamp(System.currentTimeMillis());
+                    pre.setTimestamp(3, purchaseDate);
 
-                            // Provjeri da li ima dovoljno zaliha
-                            int requestedQuantity = Integer.parseInt(quantityBox.getSelectedItem().toString());
-                            if (requestedQuantity > availableQuantity) {
-                                JOptionPane.showMessageDialog(this, "Insufficient stock. Available quantity: " + availableQuantity, "Error", JOptionPane.ERROR_MESSAGE);
-                                return;
-                            }
+                    pre.setString(4, boxQuantity.getSelectedItem().toString());
+                    pre.executeUpdate();
 
-                            // Izračunavanje ukupne cene
-                            int customerID = Integer.parseInt(customerId.getText());
-                            double totalBill = requestedQuantity * sellingPrice;
+                    JOptionPane.showMessageDialog(null, "Purchase has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                            // SQL upit za unos podataka u 'purchase_history'
-                            String sqlInsert = "INSERT INTO pharmacy.purchase_history (CUSTOMER_ID, DRUG_ID, PURCHASE_DATE, QUANTITY_PURCHASED, TOTAL_BILL) "
-                                    + "VALUES (?, ?, NOW(), ?, ?)";
-                            try (PreparedStatement insertStatement = con.prepareStatement(sqlInsert)) {
-                                // Postavljanje vrednosti parametara
-                                insertStatement.setInt(1, customerID);
-                                insertStatement.setInt(2, drugId);
-                                insertStatement.setInt(3, requestedQuantity);
-                                insertStatement.setDouble(4, totalBill);
-
-                                // Izvršavanje INSERT upita
-                                int rowsAffected = insertStatement.executeUpdate();
-
-                                if (rowsAffected > 0) {
-                                    // Ažuriraj količinu leka
-                                    updateDrugQuantity(txtDrugID.getText(), requestedQuantity);
-
-                                    JOptionPane.showMessageDialog(this, "Purchase successful!");
-                                    refreshTables();
-                                    refreshPurchaseHistoryTable(); // Osveži tabelu purchase_history
-                                } else {
-                                    JOptionPane.showMessageDialog(this, "Purchase failed. Please check the IDs and try again.");
-                                }
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Drug not found. Please check the drug ID.");
-                        }
-                    }
+                    clear(); // Assuming you have a clear() method to reset your form fields
+                    refreshPurchaseHistoryTable(); // You need to implement this method to update your purchase history table
+                    refreshDrugTable();
                 }
-            } catch (SQLException | NumberFormatException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error connecting to the database or invalid input.");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-    }//GEN-LAST:event_btnPurchaseActionPerformed
+    }//GEN-LAST:event_btnAddPurchaseActionPerformed
 
     private void purchaseHistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseHistoryTableMouseClicked
         refreshPurchaseHistoryTable();
     }//GEN-LAST:event_purchaseHistoryTableMouseClicked
 
-    private void customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersMouseClicked
-        int row = customers.getSelectedRow();
-        t = customers.getModel().getValueAt(row, 0).toString();
+    private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
+        int row = tblCustomers.getSelectedRow();
+        t = tblCustomers.getModel().getValueAt(row, 0).toString();
         String sql = "select *  from customers where CUSTOMER_ID='" + t + "' ";
 
         try {
@@ -370,7 +506,79 @@ public class BuyDrug extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
-    }//GEN-LAST:event_customersMouseClicked
+    }//GEN-LAST:event_tblCustomersMouseClicked
+
+    private void drugidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_drugidKeyReleased
+        String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB,URNC from customers where CUSTOMER_ID REGEXP '" + txtCustomerIDSearch.getText() + "' ";
+        try {
+            pre = con.prepareStatement(sql); // prepare statment sql usgin barcode (when you type barcode it will display the result automatic)
+            res = pre.executeQuery();//execute the swl statement
+            tblCustomers.setModel(DbUtils.resultSetToTableModel(res)); // set data in table
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }//GEN-LAST:event_drugidKeyReleased
+
+    private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
+        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where NAME REGEXP '" + name.getText() + "' ";
+        try {
+            pre = con.prepareStatement(sql);// prepare statment sql usgin name (when you type name it will display the result automatic)
+            res = pre.executeQuery();//execute the swl statement
+            druglist.setModel(DbUtils.resultSetToTableModel(res));// set data in table
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }//GEN-LAST:event_nameKeyReleased
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clear();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnRefundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefundActionPerformed
+       if (txtPurchaseID.getText().equals("")) {
+        JOptionPane.showMessageDialog(null, "Enter Purchase ID You want to delete", "Missing Information", 2);
+    } else {
+        try {
+            String sql = "DELETE FROM purchase_history WHERE PURCHASE_ID=?";
+            int confirming = JOptionPane.showConfirmDialog(null, "Are You Sure You Want to Delete this Purchase?");
+            if (confirming == 0) {
+                try (PreparedStatement pre = con.prepareStatement(sql)) {
+                    pre.setString(1, txtPurchaseID.getText());
+                    pre.execute();
+                    JOptionPane.showMessageDialog(null, "Purchase has been deleted Successfully", "Success Operation", 1);
+
+                    clear(); 
+                    refreshPurchaseHistoryTable();
+                    refreshDrugTable();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }
+    }//GEN-LAST:event_btnRefundActionPerformed
+
+    private void txtCustomerIDSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerIDSearchKeyReleased
+        String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB,URNC from customers where CUSTOMER_ID REGEXP '" + txtCustomerIDSearch.getText() + "' ";
+        try {
+            pre = con.prepareStatement(sql); // prepare statment sql usgin barcode (when you type barcode it will display the result automatic)
+            res = pre.executeQuery();//execute the swl statement
+            tblCustomers.setModel(DbUtils.resultSetToTableModel(res)); // set data in table
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }//GEN-LAST:event_txtCustomerIDSearchKeyReleased
+
+    private void txtCustomerUrncSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerUrncSearchKeyReleased
+        String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB,URNC from customers where URNC REGEXP '" + txtCustomerUrncSearch.getText() + "' ";
+        try {
+            pre = con.prepareStatement(sql);// prepare statment sql usgin name (when you type name it will display the result automatic)
+            res = pre.executeQuery();//execute the swl statement
+            tblCustomers.setModel(DbUtils.resultSetToTableModel(res));// set data in table
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }//GEN-LAST:event_txtCustomerUrncSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -407,53 +615,11 @@ public class BuyDrug extends javax.swing.JFrame {
         });
     }
 
-    private void updateDrugQuantity(String drugId, int purchasedQuantity) {
-        try {
-            // SQL upit za ažuriranje stanja količine leka
-            String updateQuantitySql = "UPDATE pharmacy.drugs SET QUANTITY = QUANTITY - ? WHERE DRUG_ID = ?";
-
-            // Priprema SQL naredbe
-            con.setAutoCommit(false);
-
-            // Izvrši SQL upit za ažuriranje stanja količine leka
-            pre = con.prepareStatement(updateQuantitySql);
-            pre.setInt(1, purchasedQuantity);
-            pre.setString(2, drugId);
-            pre.execute();
-
-            // Potvrdi promene u bazi podataka
-            con.commit();
-        } catch (Exception e) {
-            // Prikazi poruku o grešci ako se pojavi problem prilikom izvršavanja SQL upita
-            try {
-                // Ako dođe do greške, poništi sve izmene u bazi podataka
-                con.rollback();
-            } catch (SQLException ex) {
-                // Ako ne možemo poništiti izmene, prikaži poruku o grešci
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", 2);
-            } finally {
-                // Vrati auto-commit na prethodnu vrednost
-                try {
-                    con.setAutoCommit(true);
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private int getAvailableQuantity(String drugId) throws SQLException {
-        String sql = "SELECT QUANTITY FROM pharmacy.drugs WHERE DRUG_ID = ?";
-        pre = con.prepareStatement(sql);
-        pre.setString(1, drugId);
-
-        ResultSet rs = pre.executeQuery();
-        if (rs.next()) {
-            return rs.getInt("QUANTITY");
-        }
-
-        return 0;
-
+    private void clear() {
+        customerId.setText("");
+        txtDrugID.setText("");
+        txtPurchaseID.setText("");
+        boxQuantity.setSelectedIndex(0);
     }
 
     private void refreshTables() {
@@ -461,6 +627,40 @@ public class BuyDrug extends javax.swing.JFrame {
         refreshDrugTable();
         refreshPurchaseHistoryTable();
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxQuantity;
+    private javax.swing.JButton btnAddPurchase;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnRefund;
+    public static javax.swing.JTextField customerId;
+    private javax.swing.JLabel customerid;
+    private javax.swing.JLabel customerid1;
+    private javax.swing.JTextField drugid;
+    public static javax.swing.JTable druglist;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField name;
+    private javax.swing.JTable purchaseHistoryTable;
+    private javax.swing.JTable tblCustomers;
+    private javax.swing.JTextField txtCustomerIDSearch;
+    private javax.swing.JTextField txtCustomerUrncSearch;
+    public javax.swing.JTextField txtDrugID;
+    private javax.swing.JTextField txtPurchaseID;
+    // End of variables declaration//GEN-END:variables
 
     private void refreshPurchaseHistoryTable() {
         String sql = "SELECT * FROM pharmacy.purchase_history";
@@ -478,7 +678,7 @@ public class BuyDrug extends javax.swing.JFrame {
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
-           customers.setModel(DbUtils.resultSetToTableModel(res));
+            tblCustomers.setModel(DbUtils.resultSetToTableModel(res));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
@@ -494,22 +694,4 @@ public class BuyDrug extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPurchase;
-    public static javax.swing.JTextField customerId;
-    private javax.swing.JLabel customerid;
-    private javax.swing.JTable customers;
-    public static javax.swing.JTable druglist;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable purchaseHistoryTable;
-    private javax.swing.JComboBox<String> quantityBox;
-    public javax.swing.JTextField txtDrugID;
-    // End of variables declaration//GEN-END:variables
 }
