@@ -48,6 +48,7 @@ public class Customer_List extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
+        customers.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         customers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -75,6 +76,7 @@ public class Customer_List extends javax.swing.JFrame {
         jScrollPane1.setViewportView(customers);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Customer List");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
