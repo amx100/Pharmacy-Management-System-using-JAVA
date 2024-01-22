@@ -15,10 +15,13 @@ public class Search_Drug extends javax.swing.JFrame {
     Connection con = null;
     PreparedStatement pre = null;
     ResultSet res = null;
+    String sql1;
+    String sql2;
 
     public Search_Drug() {
         initComponents();
         con = Connect.connect();
+        drug_list();
     }
 
     /**
@@ -36,12 +39,13 @@ public class Search_Drug extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         drugid = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        searching = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        druglist = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        sort_by = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Search_Drug Form");
@@ -60,16 +64,16 @@ public class Search_Drug extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(288, 288, 288)
+                .addGap(343, 343, 343)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
@@ -85,28 +89,6 @@ public class Search_Drug extends javax.swing.JFrame {
             }
         });
 
-        searching.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        searching.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "        Drug ID", "       Name", "       Type", "       Price", "       Expiration Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(searching);
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name : ");
@@ -117,13 +99,66 @@ public class Search_Drug extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Search by Drug_Name");
+        druglist.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        druglist.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Drug ID", "Name", "Type", "Price", "Expiration Date", "Quantity"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Search by Drug_ID");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        druglist.getTableHeader().setReorderingAllowed(false);
+        druglist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                druglistMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(druglist);
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+
+        sort_by.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By : ", "Name", "Type" }));
+        sort_by.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                sort_byItemStateChanged(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Sort By : ");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sort_by, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(sort_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -132,39 +167,34 @@ public class Search_Drug extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel5))
+                        .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 45, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -183,7 +213,7 @@ public class Search_Drug extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,31 +227,85 @@ public class Search_Drug extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(749, 549));
+        setSize(new java.awt.Dimension(891, 526));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void drugidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_drugidKeyReleased
-        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE from drugs where DRUG_ID REGEXP '" + drugid.getText() + "' ";
+        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where DRUG_ID REGEXP '" + drugid.getText() + "' ";
         try {
             pre = con.prepareStatement(sql); // prepare statment sql usgin barcode (when you type barcode it will display the result automatic)
             res = pre.executeQuery();//execute the swl statement 
-            searching.setModel(DbUtils.resultSetToTableModel(res)); // set data in table
+            druglist.setModel(DbUtils.resultSetToTableModel(res)); // set data in table
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
     }//GEN-LAST:event_drugidKeyReleased
 
     private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
-        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE from drugs where NAME REGEXP '" + name.getText() + "' ";
+        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where NAME REGEXP '" + name.getText() + "' ";
         try {
             pre = con.prepareStatement(sql);// prepare statment sql usgin name (when you type name it will display the result automatic)
             res = pre.executeQuery();//execute the swl statement 
-            searching.setModel(DbUtils.resultSetToTableModel(res));// set data in table
+            druglist.setModel(DbUtils.resultSetToTableModel(res));// set data in table
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
     }//GEN-LAST:event_nameKeyReleased
+
+    private void druglistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_druglistMouseClicked
+        int row = druglist.getSelectedRow();
+        String t = druglist.getModel().getValueAt(row, 0).toString();
+        String sql = "select * from drugs where DRUG_ID='" + t + "' ";
+        try {
+            pre = con.prepareStatement(sql);
+            res = pre.executeQuery();
+            if (res.next()) {
+                String DrugId = res.getString("DRUG_ID");
+                Pharmacy.drug.txtDrugID.setText(DrugId);
+
+                String Name = res.getString("NAME");
+                Pharmacy.drug.txtDrugName.setText(Name);
+               
+                String Type = res.getString("TYPE");
+                Pharmacy.drug.txtDrugType.setSelectedItem(Type);
+
+                String Dose = res.getString("DOSE");
+                Pharmacy.drug.txtDose.setText(Dose);
+
+                String Price = res.getString("SELLING_PRICE");
+                Pharmacy.drug.txtSellingPrice.setText(Price);
+
+                String Quantity = res.getString("QUANTITY");
+                Pharmacy.drug.boxQuantity.setSelectedItem(Quantity);
+
+                String ex_Day = res.getString("EXPIRATION_DATE").split("-")[2];
+                Pharmacy.drug.boxExp_day.setSelectedItem(ex_Day);
+                String ex_Month = res.getString("EXPIRATION_DATE").split("-")[1];
+                Pharmacy.drug.boxMonth.setSelectedItem(ex_Month);
+                String ex_Year = res.getString("EXPIRATION_DATE").split("-")[0];
+                Pharmacy.drug.boxYear.setSelectedItem(ex_Year);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }//GEN-LAST:event_druglistMouseClicked
+
+    private void sort_byItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sort_byItemStateChanged
+        switch (sort_by.getSelectedIndex()) { // one case will execute in these cases
+            case 1: {
+                sql1 = "select DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY   from drugs order by NAME";
+                sort(1);
+                break;  //1- order by name from A - Z
+            }
+            case 2: {
+                sql2 = "select DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY   from drugs order by TYPE";
+                sort(2);
+                break;  // 2- order by type from A - Z
+            }
+        }
+    }//GEN-LAST:event_sort_byItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -260,16 +344,50 @@ public class Search_Drug extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField drugid;
+    public static javax.swing.JTable druglist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField name;
-    private javax.swing.JTable searching;
+    private javax.swing.JComboBox<String> sort_by;
     // End of variables declaration//GEN-END:variables
+
+    private void drug_list() { // this method will be executed when you click on drug_list
+        String sql = "select DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY  from drugs"; // get data from database
+        try {
+            pre = con.prepareStatement(sql); // prepare sql statement
+            res = pre.executeQuery(); // execute sql statement
+            druglist.setModel(DbUtils.resultSetToTableModel(res)); // set data in the table 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }
+
+    private void sort(int index) { // one case will execute in these cases 1 or 2 or 3 depend on the index number;
+        try {
+            switch (index) {
+                case 1: {
+                    pre = con.prepareStatement(sql1);
+                    res = pre.executeQuery();
+                    druglist.setModel(DbUtils.resultSetToTableModel(res));
+                }
+                break;
+                case 2: {
+                    pre = con.prepareStatement(sql2);
+                    res = pre.executeQuery();
+                    druglist.setModel(DbUtils.resultSetToTableModel(res));
+                }
+                break;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
+    }
+
 }
