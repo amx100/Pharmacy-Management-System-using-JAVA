@@ -355,7 +355,7 @@ public class Pharmacy extends javax.swing.JFrame {
         });
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-logout-30.png"))); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/log out.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -452,11 +452,12 @@ public class Pharmacy extends javax.swing.JFrame {
                                     .addComponent(lblType))))
                         .addGap(21, 21, 21))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(31, 31, 31))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLogout)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(28, 28, 28))))
         );
 
         jPanel1.add(jPanel3);
@@ -569,7 +570,7 @@ public class Pharmacy extends javax.swing.JFrame {
 
     private void btnAddCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCapitalActionPerformed
       capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-      capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);        
+      capital.setVisible(true);
     }//GEN-LAST:event_btnAddCapitalActionPerformed
 
     private void updateCapitalLabelOnOtherForm() {
