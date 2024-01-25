@@ -44,6 +44,7 @@ public class FinancialTransaction extends javax.swing.JFrame {
         f_transactions = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
