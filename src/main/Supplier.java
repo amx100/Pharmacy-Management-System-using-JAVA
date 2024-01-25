@@ -340,16 +340,15 @@ public class Supplier extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
-        if (txtSupplierID.getText().equals("") || txtSupplierName.getText().equals("") || txtSupplierEmail.getText().equals("") || txtSupplierPhone.getText().equals("")) {
+        if (txtSupplierName.getText().equals("") || txtSupplierEmail.getText().equals("") || txtSupplierPhone.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Complete Supplier Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                String sql = "INSERT INTO suppliers (SUPPLIER_ID, NAME, EMAIL, PHONE) VALUES (?, ?, ?, ?)";
-                try (PreparedStatement pre = con.prepareStatement(sql)) {
-                    pre.setString(1, txtSupplierID.getText());
-                    pre.setString(2, txtSupplierName.getText());
-                    pre.setString(3, txtSupplierEmail.getText());
-                    pre.setString(4, txtSupplierPhone.getText());
+                String sql = "INSERT INTO suppliers ( NAME, EMAIL, PHONE) VALUES ( ?, ?, ?)";
+                try (PreparedStatement pre = con.prepareStatement(sql)) {    
+                    pre.setString(1, txtSupplierName.getText());
+                    pre.setString(2, txtSupplierEmail.getText());
+                    pre.setString(3, txtSupplierPhone.getText());
                     pre.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Supplier has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     clear();

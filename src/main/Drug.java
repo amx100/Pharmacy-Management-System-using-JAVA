@@ -8,8 +8,8 @@ package main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 
 public class Drug extends javax.swing.JFrame {
 
@@ -20,7 +20,7 @@ public class Drug extends javax.swing.JFrame {
     public Drug() {
         initComponents();
         con = Connect.connect();
-        
+
     }
 
     /**
@@ -358,47 +358,41 @@ public class Drug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnAdddrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdddrugActionPerformed
-        String drugID = txtDrugID.getText();
-        String drugName = txtDrugName.getText();
-        String drugDose = txtDose.getText();
-        String drugPrice = txtSellingPrice.getText();
-        String expirationDay = boxExp_day.getSelectedItem().toString();
-        String expirationMonth = boxMonth.getSelectedItem().toString();
-        String expirationYear = boxYear.getSelectedItem().toString();
-        String drugType = txtDrugType.getSelectedItem().toString();
-        String drugQuantity = boxQuantity.getSelectedItem().toString();
-
-        if (drugQuantity.equals("0") || drugID.equals("") || drugName.equals("") || drugType.equals("Select Type") || drugDose.equals("")
-                || expirationDay.equals("Select Day") || expirationMonth.equals("Select Month") || expirationYear.equals("Select Year")) {
-            JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", 2);
+        if (txtDrugName.getText().equals("") || txtDrugType.getSelectedItem().equals("Select Type") || txtDose.getText().equals("")
+                || boxExp_day.getSelectedItem().equals("Select Day") || boxMonth.getSelectedItem().equals("Select Month") || boxYear.getSelectedItem().equals("Select Year")) {
+            JOptionPane.showMessageDialog(null, "Complete Drug Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
             if (!checkdrug_name()) {
-                String sql = "INSERT INTO drugs (DRUG_ID, NAME, TYPE, DOSE, EXPIRATION_DATE,SELLING_PRICE,QUANTITY) VALUES (?, ?, ?, ?, ?, ?,?)";
-                int suring = JOptionPane.showConfirmDialog(null, "Do you want to add this drug \n\nName : " + drugName + "\nExpiration_Date : " + expirationDay + "-" + expirationMonth + "-" + expirationYear);
+                String sql = "INSERT INTO drugs (NAME, TYPE, DOSE, SELLING_PRICE, EXPIRATION_DATE, QUANTITY) VALUES (?, ?, ?, ?, ?, ?)";
+                int suring = JOptionPane.showConfirmDialog(null, "Do you want to add this drug?\n\nName: " + txtDrugName.getText() + "\nExpiration Date: " + boxExp_day.getSelectedItem() + "-" + boxMonth.getSelectedItem() + "-" + boxYear.getSelectedItem());
 
-                if (suring == 0) {
+                if (suring == JOptionPane.YES_OPTION) {
                     try {
+                        String expirationDate = boxYear.getSelectedItem() + "-" + boxMonth.getSelectedItem() + "-" + boxExp_day.getSelectedItem();
+                        double sellingPrice = Double.parseDouble(txtSellingPrice.getText());
+                        int quantity = Integer.parseInt((String) boxQuantity.getSelectedItem());
+
                         pre = con.prepareStatement(sql);
-                        pre.setString(1, drugID);
-                        pre.setString(2, drugName);
-                        pre.setString(3, drugType);
-                        pre.setString(4, drugDose);
-                        pre.setString(5, expirationYear + "-" + expirationMonth + "-" + expirationDay);
-                        pre.setString(6, drugPrice);
-                        pre.setString(7, drugQuantity);
+                        pre.setString(1, txtDrugName.getText());
+                        pre.setString(2, (String) txtDrugType.getSelectedItem());
+                        pre.setString(3, txtDose.getText());
+                        pre.setDouble(4, sellingPrice);
+                        pre.setString(5, expirationDate);
+                        pre.setInt(6, quantity);
 
                         pre.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Drug has been Added Successfully", "Success Operation", 1);
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+                        JOptionPane.showMessageDialog(null, "Drug has been Added Successfully", "Success Operation", JOptionPane.INFORMATION_MESSAGE);
+                        clear();
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null, "Please enter valid selling price and quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    clear();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Drug with this ID already exisist", "Failed Operation", 2);
+                JOptionPane.showMessageDialog(null, "Drug with this ID already exists", "Failed Operation", JOptionPane.ERROR_MESSAGE);
             }
         }
-
     }//GEN-LAST:event_btnAdddrugActionPerformed
 
     private void btnDeleteDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteDrugActionPerformed
@@ -511,7 +505,7 @@ public class Drug extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> boxExp_day;
     public javax.swing.JComboBox<String> boxMonth;
-    public static javax.swing.JComboBox<String> boxQuantity;
+    public javax.swing.JComboBox<String> boxQuantity;
     public javax.swing.JComboBox<String> boxYear;
     public javax.swing.JButton btnAdddrug;
     private javax.swing.JButton btnCancel;

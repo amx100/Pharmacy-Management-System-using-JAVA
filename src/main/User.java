@@ -47,9 +47,9 @@ public class User extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         deleteuser = new javax.swing.JButton();
         adduser = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
         updateuser = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
@@ -141,12 +141,12 @@ public class User extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-clear-24.png"))); // NOI18N
-        jButton4.setText("Clear");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnClear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-clear-24.png"))); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnClearActionPerformed(evt);
             }
         });
 
@@ -160,12 +160,12 @@ public class User extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-cancel-24.png"))); // NOI18N
-        jButton6.setText("Cancel");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-cancel-24.png"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -179,8 +179,8 @@ public class User extends javax.swing.JFrame {
                     .addComponent(deleteuser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(updateuser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(adduser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -193,9 +193,9 @@ public class User extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteuser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(btnClear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(btnCancel)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -399,17 +399,12 @@ public class User extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        txtUserId.setText("");
-        txtUserPassword.setText("");
-        txtUserName.setText("");
-        boxDay.setSelectedIndex(0);
-        boxMonth.setSelectedIndex(0);
-        boxYear.setSelectedIndex(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+      clear();
+    }//GEN-LAST:event_btnClearActionPerformed
 
     private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
-        if (txtUserId.getText().equals("") || txtUserName.getText().equals("") || boxDay.getSelectedIndex() == 0
+        if (txtUserName.getText().equals("") || boxDay.getSelectedIndex() == 0
                 || boxMonth.getSelectedIndex() == 0 || boxYear.getSelectedIndex() == 0 || txtUserPassword.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else if (!checkid()) {
@@ -417,15 +412,15 @@ public class User extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "User_Password Should be at least 6 Characters", "Wrong Operation", JOptionPane.WARNING_MESSAGE);
             } else {
                 // Assuming 'TYPE' is the name of the column in your database for user type
-                String sql = "INSERT INTO users (USER_ID, NAME, DOB, PASSWORD, TYPE) VALUES (?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO users ( NAME, DOB, PASSWORD, TYPE) VALUES (?, ?, ?, ?)";
                 try {
                     try (PreparedStatement pre = con.prepareStatement(sql)) {
-                        pre.setString(1, txtUserId.getText());
-                        pre.setString(2, txtUserName.getText());
+                       
+                        pre.setString(1, txtUserName.getText());
                         String dob = boxYear.getSelectedItem() + "-" + boxMonth.getSelectedItem() + "-" + boxDay.getSelectedItem();
-                        pre.setString(3, dob);
-                        pre.setString(4, txtUserPassword.getText());
-                        pre.setString(5, boxType.getSelectedItem().toString());
+                        pre.setString(2, dob);
+                        pre.setString(3, txtUserPassword.getText());
+                        pre.setString(4, boxType.getSelectedItem().toString());
 
                         pre.executeUpdate();
 
@@ -545,9 +540,9 @@ public class User extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblUsersMouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -587,9 +582,9 @@ public class User extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> boxMonth;
     private javax.swing.JComboBox<String> boxType;
     public static javax.swing.JComboBox<String> boxYear;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClear;
     public javax.swing.JButton deleteuser;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

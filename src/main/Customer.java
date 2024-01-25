@@ -4,6 +4,7 @@
  */
 package main;
 
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -429,18 +430,17 @@ public class Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
-        if (customerId.getText().equals("") ||  firstNameField.getText().equals("") || lastNameField.getText().equals("") || day.getSelectedIndex() == 0
+        if (firstNameField.getText().equals("") || lastNameField.getText().equals("") || day.getSelectedIndex() == 0
                 || month.getSelectedIndex() == 0 || year.getSelectedIndex() == 0 || txtURNC.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
             try {
-                String sql = "INSERT INTO customers ( CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB,URNC) VALUES (?, ?, ?, ?,?)";
+                String sql = "INSERT INTO customers (FIRST_NAME, LAST_NAME, DOB,URNC) VALUES (?, ?, ?,?)";
                 try (PreparedStatement pre = con.prepareStatement(sql)) {
-                    pre.setString(1,customerId.getText());
-                    pre.setString(2, firstNameField.getText());
-                    pre.setString(3, lastNameField.getText());
-                    pre.setString(4, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
-                    pre.setString(5, txtURNC.getText());
+                    pre.setString(1, firstNameField.getText());
+                    pre.setString(2, lastNameField.getText());
+                    pre.setString(3, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
+                    pre.setString(4, txtURNC.getText());
                     pre.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Customer has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
                     clear();
@@ -477,6 +477,9 @@ public class Customer extends javax.swing.JFrame {
                 String Year = res.getString("DOB").split("-")[0];
                 year.setSelectedItem(Year);
 
+                long URNC = res.getLong("URNC");
+                txtURNC.setText(String.valueOf(URNC));
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
@@ -499,6 +502,7 @@ public class Customer extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
             }
             refresh();
+            clear();
         } else {
             JOptionPane.showMessageDialog(null, "Customer is not Found", "Wrong Operation", 2);
         }
@@ -507,10 +511,18 @@ public class Customer extends javax.swing.JFrame {
     private void btnUpdateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCustomerActionPerformed
         String sql = "UPDATE customers SET FIRST_NAME=?, LAST_NAME=?, DOB=?, URNC=? WHERE CUSTOMER_ID=?";
         try (PreparedStatement pre = con.prepareStatement(sql)) {
+            // Validate URNC length
+            String URNC = txtURNC.getText().trim();
+            if (URNC.length() != 13) {
+                JOptionPane.showMessageDialog(null, "URNC must include exactly 13 numbers", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Exit method if URNC length is incorrect
+            }
+
+            // Proceed with the update if URNC length is valid
             pre.setString(1, firstNameField.getText());
             pre.setString(2, lastNameField.getText());
             pre.setString(3, year.getSelectedItem() + "-" + month.getSelectedItem() + "-" + day.getSelectedItem());
-            pre.setString(4, txtURNC.getText());
+            pre.setString(4, URNC); // Use the validated URNC
             pre.setString(5, customerId.getText());
             pre.executeUpdate();
             JOptionPane.showMessageDialog(null, "Customer has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -604,6 +616,7 @@ public class Customer extends javax.swing.JFrame {
         day.setSelectedIndex(0);
         month.setSelectedIndex(0);
         year.setSelectedIndex(0);
+        txtURNC.setText("");
     }
 
     private void refresh() {

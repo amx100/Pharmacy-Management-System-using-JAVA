@@ -62,12 +62,12 @@ public class BuyDrug extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         boxQuantity = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        btnPurchase = new javax.swing.JButton();
+        btnAddPurchase = new javax.swing.JButton();
         btnDeletePurchase = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         txtPurchaseID = new javax.swing.JTextField();
         lblPurchaseID = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCustomers = new javax.swing.JTable();
@@ -112,12 +112,12 @@ public class BuyDrug extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Quantity");
 
-        btnPurchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/add-cart.png"))); // NOI18N
-        btnPurchase.setText("Generate Bill");
-        btnPurchase.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnPurchase.addActionListener(new java.awt.event.ActionListener() {
+        btnAddPurchase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/add-cart.png"))); // NOI18N
+        btnAddPurchase.setText("Generate Bill");
+        btnAddPurchase.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnAddPurchase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPurchaseActionPerformed(evt);
+                btnAddPurchaseActionPerformed(evt);
             }
         });
 
@@ -144,12 +144,12 @@ public class BuyDrug extends javax.swing.JFrame {
         lblPurchaseID.setForeground(new java.awt.Color(255, 255, 255));
         lblPurchaseID.setText("Purchase ID");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-24.png"))); // NOI18N
-        jButton1.setText("Print Bill");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-24.png"))); // NOI18N
+        btnPrint.setText("Print Bill");
+        btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPrintActionPerformed(evt);
             }
         });
 
@@ -176,8 +176,8 @@ public class BuyDrug extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDeletePurchase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPurchase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnPrint, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAddPurchase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,13 +198,13 @@ public class BuyDrug extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
                         .addComponent(txtDrugID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(boxQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1))
-                    .addComponent(btnPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -488,7 +488,7 @@ public class BuyDrug extends javax.swing.JFrame {
 
     }//GEN-LAST:event_druglistMouseClicked
 
-    private void btnPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseActionPerformed
+    private void btnAddPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPurchaseActionPerformed
         if (txtCustomerId.getText().isEmpty() || txtDrugID.getText().isEmpty() || boxQuantity.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Complete Your Information", "Missing Information", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -527,7 +527,7 @@ public class BuyDrug extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_btnPurchaseActionPerformed
+    }//GEN-LAST:event_btnAddPurchaseActionPerformed
 
     private void purchaseHistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseHistoryTableMouseClicked
         refreshPurchaseHistoryTable();
@@ -623,7 +623,7 @@ public class BuyDrug extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nameKeyReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         try {
             // Check if the purchase ID field is not empty
             if (txtPurchaseID.getText().trim().isEmpty()) {
@@ -672,7 +672,7 @@ public class BuyDrug extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid numeric Purchase ID.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -799,13 +799,13 @@ public class BuyDrug extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxQuantity;
+    private javax.swing.JButton btnAddPurchase;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeletePurchase;
-    private javax.swing.JButton btnPurchase;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JLabel customerid;
     private javax.swing.JTextField drugid;
     public static javax.swing.JTable druglist;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
