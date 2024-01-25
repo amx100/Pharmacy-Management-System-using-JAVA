@@ -516,7 +516,12 @@ public class Pharmacy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDrugsDetActionPerformed
 
     private void btnUserDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDetActionPerformed
-        enteruser();
+        
+          if ("Admin".equals(Login.TYPE)) {
+                     enteruser();
+    } else {
+        JOptionPane.showMessageDialog(this, "You do not have permission to enter this field", "Access Denied", JOptionPane.ERROR_MESSAGE);
+    }
 
     }//GEN-LAST:event_btnUserDetActionPerformed
 
