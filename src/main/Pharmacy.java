@@ -116,7 +116,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnUserDet);
-        btnUserDet.setBounds(980, 100, 140, 34);
+        btnUserDet.setBounds(1000, 100, 140, 34);
 
         btnDrugsDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnDrugsDet.setText("Drugs Details");
@@ -126,7 +126,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnDrugsDet);
-        btnDrugsDet.setBounds(640, 100, 150, 34);
+        btnDrugsDet.setBounds(670, 100, 150, 34);
 
         btnAddUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddUser.setText("Add User");
@@ -136,7 +136,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddUser);
-        btnAddUser.setBounds(980, 150, 140, 22);
+        btnAddUser.setBounds(1000, 150, 140, 22);
 
         btnAddDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddDrug.setText("Add Drug");
@@ -146,7 +146,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddDrug);
-        btnAddDrug.setBounds(640, 150, 150, 22);
+        btnAddDrug.setBounds(670, 150, 150, 22);
 
         btnSearchDrug.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSearchDrug.setText("Search Drug");
@@ -156,7 +156,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSearchDrug);
-        btnSearchDrug.setBounds(640, 240, 150, 22);
+        btnSearchDrug.setBounds(670, 240, 150, 22);
 
         btnExpiredDrugs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnExpiredDrugs.setText("Expired Drugs");
@@ -166,7 +166,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnExpiredDrugs);
-        btnExpiredDrugs.setBounds(640, 180, 150, 22);
+        btnExpiredDrugs.setBounds(670, 180, 150, 22);
 
         btnAlmostF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAlmostF.setText("Almost Finished");
@@ -176,7 +176,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAlmostF);
-        btnAlmostF.setBounds(640, 210, 150, 22);
+        btnAlmostF.setBounds(670, 210, 150, 22);
 
         btnCustomerDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCustomerDet.setText("Customer Details");
@@ -186,7 +186,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCustomerDet);
-        btnCustomerDet.setBounds(300, 100, 150, 34);
+        btnCustomerDet.setBounds(330, 100, 150, 34);
 
         btnPurchaseDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnPurchaseDet.setText("Purchase Details");
@@ -196,7 +196,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPurchaseDet);
-        btnPurchaseDet.setBounds(470, 100, 150, 34);
+        btnPurchaseDet.setBounds(500, 100, 150, 34);
 
         btnPurchaseH.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnPurchaseH.setText("Purchase History");
@@ -206,7 +206,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnPurchaseH);
-        btnPurchaseH.setBounds(470, 180, 150, 22);
+        btnPurchaseH.setBounds(500, 180, 150, 22);
 
         btnCreateBill.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCreateBill.setText("Create Bill");
@@ -216,7 +216,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCreateBill);
-        btnCreateBill.setBounds(470, 150, 150, 22);
+        btnCreateBill.setBounds(500, 150, 150, 22);
 
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddCustomer.setText("Add Customer");
@@ -226,7 +226,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddCustomer);
-        btnAddCustomer.setBounds(300, 150, 150, 22);
+        btnAddCustomer.setBounds(330, 150, 150, 22);
 
         btnSupplierDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSupplierDet.setText("Supplier Details");
@@ -236,7 +236,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSupplierDet);
-        btnSupplierDet.setBounds(140, 100, 150, 34);
+        btnSupplierDet.setBounds(160, 100, 150, 34);
 
         btnAddSupplierPurchase.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddSupplierPurchase.setText("Make a Deal");
@@ -246,7 +246,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddSupplierPurchase);
-        btnAddSupplierPurchase.setBounds(140, 180, 150, 22);
+        btnAddSupplierPurchase.setBounds(160, 180, 150, 22);
 
         btnFinancialTransaction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnFinancialTransaction.setText("Transactions");
@@ -256,7 +256,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnFinancialTransaction);
-        btnFinancialTransaction.setBounds(820, 180, 140, 22);
+        btnFinancialTransaction.setBounds(840, 180, 140, 22);
 
         btnAddCapital.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddCapital.setText("Add Capital");
@@ -266,7 +266,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddCapital);
-        btnAddCapital.setBounds(820, 150, 140, 22);
+        btnAddCapital.setBounds(840, 150, 140, 22);
 
         btnCapitalDet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnCapitalDet.setText("Capital Details");
@@ -276,7 +276,7 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCapitalDet);
-        btnCapitalDet.setBounds(820, 100, 140, 34);
+        btnCapitalDet.setBounds(840, 100, 140, 34);
 
         btnAddSupplier.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAddSupplier.setText("Add Supplier");
@@ -286,17 +286,17 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnAddSupplier);
-        btnAddSupplier.setBounds(140, 150, 150, 22);
+        btnAddSupplier.setBounds(160, 150, 150, 22);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/capsule.pill.health.medicine (1).jpg"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/image (2).v5.png"))); // NOI18N
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(0, 80, 1311, 550);
+        jLabel14.setBounds(0, 80, 1300, 550);
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(176, 137, 104));
 
         today.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        today.setForeground(new java.awt.Color(153, 0, 0));
+        today.setForeground(new java.awt.Color(88, 49, 1));
         today.setText("00-00-0000");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -316,11 +316,11 @@ public class Pharmacy extends javax.swing.JFrame {
         jLabel2.setText("Time");
 
         time.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        time.setForeground(new java.awt.Color(0, 0, 102));
+        time.setForeground(new java.awt.Color(243, 213, 181));
         time.setText("00:00:00");
 
         btnExit.setBackground(new java.awt.Color(0, 0, 0));
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-power-off-65.png"))); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-power-off-65 (1).png"))); // NOI18N
         btnExit.setToolTipText("Logout");
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -339,16 +339,17 @@ public class Pharmacy extends javax.swing.JFrame {
 
         lbl_LoginAs.setBackground(new java.awt.Color(255, 255, 255));
         lbl_LoginAs.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbl_LoginAs.setForeground(new java.awt.Color(153, 0, 0));
+        lbl_LoginAs.setForeground(new java.awt.Color(255, 255, 255));
         lbl_LoginAs.setText(" ");
 
         lbl_Type.setBackground(new java.awt.Color(255, 255, 255));
         lbl_Type.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbl_Type.setForeground(new java.awt.Color(153, 0, 0));
+        lbl_Type.setForeground(new java.awt.Color(255, 255, 255));
         lbl_Type.setText(" ");
 
         btnSettings.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-settings-50 (5).png"))); // NOI18N
+        btnSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSettingsActionPerformed(evt);
@@ -357,7 +358,7 @@ public class Pharmacy extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/log out.png"))); // NOI18N
-        btnLogout.setText("Logout");
+        btnLogout.setText("Log out");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -392,23 +393,22 @@ public class Pharmacy extends javax.swing.JFrame {
                 .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblType, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_LoginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                    .addComponent(lblType, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_LoginAs, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(76, 76, 76))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(49, 49, 49)
+                        .addGap(103, 103, 103)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -416,30 +416,30 @@ public class Pharmacy extends javax.swing.JFrame {
                     .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(53, 53, 53)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(26, 26, 26)
                         .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1))
-                .addGap(18, 18, 18))
+                .addGap(20, 20, 20))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
-                        .addGap(14, 14, 14))
+                        .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -456,20 +456,22 @@ public class Pharmacy extends javax.swing.JFrame {
                             .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(31, 31, 31))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3))))
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(time))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(31, 31, 31))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(time)
+                            .addComponent(today, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jPanel1.add(jPanel3);

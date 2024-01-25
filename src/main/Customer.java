@@ -61,9 +61,9 @@ public class Customer extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnDeleteCustomer = new javax.swing.JButton();
         btnUpdateCustomer = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
         btnAddCustomer = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -157,16 +157,6 @@ public class Customer extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-cancel-24.png"))); // NOI18N
-        btnCancel.setText("Cancel");
-        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
         btnAddCustomer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnAddCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-add-user-24 (2).png"))); // NOI18N
         btnAddCustomer.setText("     Add Customer");
@@ -179,11 +169,21 @@ public class Customer extends javax.swing.JFrame {
 
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-clear-24.png"))); // NOI18N
-        btnClear.setText("Clear");
+        btnClear.setText("     Clear");
         btnClear.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-cancel-24.png"))); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -194,32 +194,27 @@ public class Customer extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnUpdateCustomer))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDeleteCustomer))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnAddCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteCustomer)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateCustomer))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(btnAddCustomer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdateCustomer)
                 .addGap(16, 16, 16)
+                .addComponent(btnUpdateCustomer)
+                .addGap(18, 18, 18)
                 .addComponent(btnDeleteCustomer)
                 .addGap(18, 18, 18)
-                .addComponent(btnCancel)
-                .addGap(18, 18, 18)
                 .addComponent(btnClear)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18)
+                .addComponent(btnCancel)
+                .addGap(11, 11, 11))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
