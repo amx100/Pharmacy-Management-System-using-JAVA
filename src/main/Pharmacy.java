@@ -722,7 +722,6 @@ public class Pharmacy extends javax.swing.JFrame {
         btnExit.setEnabled(true);
         btnAddSupplier.setVisible(true);
         btnAddSupplierPurchase.setVisible(true);
-
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
         btnAddUser.setVisible(false);
@@ -739,12 +738,13 @@ public class Pharmacy extends javax.swing.JFrame {
 
     private void entercapital() {
         btnCapitalDet.setEnabled(false);
-        btnSupplierDet.setVisible(true);
-        btnCustomerDet.setVisible(true);
-        btnPurchaseDet.setVisible(true);
+        btnSupplierDet.setEnabled(true);
+        btnCustomerDet.setEnabled(true);
+        btnPurchaseDet.setEnabled(true);
+        btnDrugsDet.setEnabled(true);
         btnUserDet.setEnabled(true);
-        btnSettings.setVisible(true);
-        btnExit.setVisible(true);
+        btnSettings.setEnabled(true);
+        btnExit.setEnabled(true);
         btnAddCapital.setVisible(true);
         btnFinancialTransaction.setVisible(true);
         btnAddUser.setVisible(false);
@@ -790,20 +790,15 @@ public class Pharmacy extends javax.swing.JFrame {
         btnSettings.setEnabled(true);
         btnCapitalDet.setEnabled(true);
         btnSupplierDet.setEnabled(true);
-
         btnSearchDrug.setVisible(true);
         btnExpiredDrugs.setVisible(true);
         btnAddDrug.setVisible(true);
         btnAddUser.setVisible(false);
-
         btnAlmostF.setVisible(true);
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
-
         btnAddCustomer.setVisible(false);
-
         btnLogout.setVisible(false);
-
         btnAddSupplier.setVisible(false);
         btnAddSupplierPurchase.setVisible(false);
         btnAddCapital.setVisible(false);
@@ -813,28 +808,22 @@ public class Pharmacy extends javax.swing.JFrame {
 
     private void entercustomer() {
         btnCustomerDet.setEnabled(false);
-
         btnDrugsDet.setEnabled(true);
         btnUserDet.setEnabled(true);
         btnSettings.setEnabled(true);
         btnPurchaseDet.setEnabled(true);
         btnCapitalDet.setEnabled(true);
-
         btnAddCustomer.setVisible(true);
-
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
         btnAddDrug.setVisible(false);
-
         btnSearchDrug.setVisible(false);
         btnExpiredDrugs.setVisible(false);
         btnAlmostF.setVisible(false);
-
         btnLogout.setVisible(false);
         btnAddSupplier.setVisible(false);
         btnAddSupplierPurchase.setVisible(false);
         btnSupplierDet.setEnabled(true);
-
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
     }
