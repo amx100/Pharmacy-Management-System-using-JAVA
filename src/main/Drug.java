@@ -458,7 +458,6 @@ public class Drug extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnUpdateDrugActionPerformed
 
-
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         clear();
     }//GEN-LAST:event_btnClearActionPerformed

@@ -17,14 +17,14 @@ import net.proteanit.sql.DbUtils;
  */
 public class FinancialTransaction extends javax.swing.JFrame {
 
-     Connection con = null;
+    Connection con = null;
     PreparedStatement pre = null;
     ResultSet res = null;
 
     public FinancialTransaction() {
         initComponents();
-         con = Connect.connect();
-         refreshFinancialTransactionsTable();
+        con = Connect.connect();
+        refreshFinancialTransactionsTable();
     }
 
     /**
@@ -180,7 +180,7 @@ public class FinancialTransaction extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void refreshFinancialTransactionsTable() {
         try {
             String sql = "SELECT * FROM financial_transactions";
@@ -191,7 +191,6 @@ public class FinancialTransaction extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error refreshing capital table: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable f_transactions;

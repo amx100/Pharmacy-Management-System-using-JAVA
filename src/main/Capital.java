@@ -323,7 +323,7 @@ public class Capital extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddCapitalActionPerformed
 
-     public double getCurrentCapital() {
+    public double getCurrentCapital() {
         try {
             String sql = "SELECT * FROM pharmacy.current_capital_view;";
             try (PreparedStatement pre = con.prepareStatement(sql); ResultSet resultSet = pre.executeQuery()) {
@@ -334,9 +334,9 @@ public class Capital extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error getting current capital: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return 0.0; 
+        return 0.0;
     }
-    
+
     private void tblCapitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCapitalMouseClicked
         int row = tblCapital.getSelectedRow();
         String t = tblCapital.getModel().getValueAt(row, 0).toString();
@@ -375,8 +375,8 @@ public class Capital extends javax.swing.JFrame {
                         pre.execute();
                         JOptionPane.showMessageDialog(null, "Capital Record has been deleted Successfully", "Success Operation", 1);
 
-                        clear();  
-                        refreshCapitalTable();  
+                        clear();
+                        refreshCapitalTable();
                     }
                 }
             } catch (NumberFormatException | SQLException e) {

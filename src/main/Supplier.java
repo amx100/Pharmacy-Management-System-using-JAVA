@@ -345,7 +345,7 @@ public class Supplier extends javax.swing.JFrame {
         } else {
             try {
                 String sql = "INSERT INTO suppliers ( NAME, EMAIL, PHONE) VALUES ( ?, ?, ?)";
-                try (PreparedStatement pre = con.prepareStatement(sql)) {    
+                try (PreparedStatement pre = con.prepareStatement(sql)) {
                     pre.setString(1, txtSupplierName.getText());
                     pre.setString(2, txtSupplierEmail.getText());
                     pre.setString(3, txtSupplierPhone.getText());
@@ -394,7 +394,7 @@ public class Supplier extends javax.swing.JFrame {
             pre.setString(1, txtSupplierName.getText());
             pre.setString(2, txtSupplierEmail.getText());
             pre.setString(3, txtSupplierPhone.getText());
-            pre.setString(4, txtSupplierID.getText()); 
+            pre.setString(4, txtSupplierID.getText());
             pre.executeUpdate();
             JOptionPane.showMessageDialog(null, "Supplier has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
             clear();

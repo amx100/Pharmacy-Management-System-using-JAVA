@@ -400,7 +400,7 @@ public class User extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-      clear();
+        clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void adduserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adduserActionPerformed
@@ -415,7 +415,7 @@ public class User extends javax.swing.JFrame {
                 String sql = "INSERT INTO users ( NAME, DOB, PASSWORD, TYPE) VALUES (?, ?, ?, ?)";
                 try {
                     try (PreparedStatement pre = con.prepareStatement(sql)) {
-                       
+
                         pre.setString(1, txtUserName.getText());
                         String dob = boxYear.getSelectedItem() + "-" + boxMonth.getSelectedItem() + "-" + boxDay.getSelectedItem();
                         pre.setString(2, dob);
@@ -470,7 +470,7 @@ public class User extends javax.swing.JFrame {
             String sqlUpdate = "UPDATE users SET PASSWORD=?, TYPE=? WHERE USER_ID=?";
 
             try {
-               
+
                 pre = con.prepareStatement(sqlSelect);
                 pre.setInt(1, Integer.parseInt(txtUserId.getText()));
                 ResultSet rs = pre.executeQuery();
@@ -479,17 +479,16 @@ public class User extends javax.swing.JFrame {
                     String existingPassword = rs.getString("PASSWORD");
                     String existingType = rs.getString("TYPE");
 
-                    
                     if (txtUserPassword.getText().isEmpty() || txtUserPassword.getText().equals(existingPassword)) {
                         txtUserPassword.setText(existingPassword);
                     }
 
                     if (boxType.getSelectedItem() == null || boxType.getSelectedItem().toString().equals(existingType)) {
-                        boxType.setSelectedItem(existingType); 
+                        boxType.setSelectedItem(existingType);
                     }
                     if (txtUserPassword.getText().equals(existingPassword) && boxType.getSelectedItem().toString().equals(existingType)) {
                         JOptionPane.showMessageDialog(null, "No changes to update", "Error", JOptionPane.ERROR_MESSAGE);
-                        return; 
+                        return;
                     }
                 }
                 pre = con.prepareStatement(sqlUpdate);
@@ -536,7 +535,6 @@ public class User extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
-
 
     }//GEN-LAST:event_tblUsersMouseClicked
 

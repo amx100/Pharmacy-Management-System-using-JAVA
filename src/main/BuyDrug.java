@@ -790,39 +790,39 @@ public class BuyDrug extends javax.swing.JFrame {
         boxQuantity.setSelectedIndex(0);
     }
 
-   public static void generateReport(PreparedStatement preparedStatement) {
-    Connection con = null;
-    try {
-        // Load the compiled JasperReport (.jasper) file
-        JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Ahmed\\Desktop\\Pharma\\Pharmacy-Management-System-master\\src\\main\\NewBill.jasper");
+    public static void generateReport(PreparedStatement preparedStatement) {
+        Connection con = null;
+        try {
+            // Load the compiled JasperReport (.jasper) file
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Ahmed\\Desktop\\Pharma\\Pharmacy-Management-System-master\\src\\main\\NewBill.jasper");
 
-        // Create a Map of parameters
-        Map<String, Object> parameters = new HashMap<>();
+            // Create a Map of parameters
+            Map<String, Object> parameters = new HashMap<>();
 
-        // Get a database connection (replace with your actual database connection code)
-        con = preparedStatement.getConnection();
+            // Get a database connection (replace with your actual database connection code)
+            con = preparedStatement.getConnection();
 
-        // Execute the SQL query using the provided PreparedStatement
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            // Create a JRResultSetDataSource with the ResultSet
-            JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(resultSet);
+            // Execute the SQL query using the provided PreparedStatement
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Create a JRResultSetDataSource with the ResultSet
+                JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(resultSet);
 
-            // Fill the JasperReport with data from the ResultSet
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
+                // Fill the JasperReport with data from the ResultSet
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
 
-            // Display the JasperReport in a JasperViewer
-            JasperViewer viewer = new JasperViewer(jasperPrint, false);
-            viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Set to dispose on close, not exit
+                // Display the JasperReport in a JasperViewer
+                JasperViewer viewer = new JasperViewer(jasperPrint, false);
+                viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Set to dispose on close, not exit
 
-            // Make the viewer visible
-            viewer.setVisible(true);
+                // Make the viewer visible
+                viewer.setVisible(true);
+            }
+        } catch (SQLException | JRException e) {
+            e.printStackTrace();
+        } finally {
+            // Do not close the connection here; let it be managed outside this method
         }
-    } catch (SQLException | JRException e) {
-        e.printStackTrace();
-    } finally {
-        // Do not close the connection here; let it be managed outside this method
     }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxQuantity;
