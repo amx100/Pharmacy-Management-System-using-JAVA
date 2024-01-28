@@ -266,7 +266,7 @@ public class Search_Drug extends javax.swing.JFrame {
 
                 String Name = res.getString("NAME");
                 Pharmacy.drug.txtDrugName.setText(Name);
-               
+
                 String Type = res.getString("TYPE");
                 Pharmacy.drug.txtDrugType.setSelectedItem(Type);
 
@@ -293,17 +293,19 @@ public class Search_Drug extends javax.swing.JFrame {
     }//GEN-LAST:event_druglistMouseClicked
 
     private void sort_byItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sort_byItemStateChanged
-        switch (sort_by.getSelectedIndex()) { // one case will execute in these cases
-            case 1: {
-                sql1 = "select DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY   from drugs order by NAME";
+        switch (sort_by.getSelectedIndex()) {
+            case 0: // Sortiraj po ID-ju kada je selektovan nulti indeks
+                sql1 = "SELECT DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY FROM drugs ORDER BY DRUG_ID";
+                sort(1); // Pozivamo sort metodu sa indeksom 1 kako bismo pokrenuli sortiranje po ID-ju
+                break;
+            case 1: // Sortiraj po Imenu
+                sql1 = "SELECT DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY FROM drugs ORDER BY NAME";
                 sort(1);
-                break;  //1- order by name from A - Z
-            }
-            case 2: {
-                sql2 = "select DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY   from drugs order by TYPE";
+                break;
+            case 2: // Sortiraj po Tipu
+                sql2 = "SELECT DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY FROM drugs ORDER BY TYPE";
                 sort(2);
-                break;  // 2- order by type from A - Z
-            }
+                break;
         }
     }//GEN-LAST:event_sort_byItemStateChanged
 
@@ -369,21 +371,19 @@ public class Search_Drug extends javax.swing.JFrame {
         }
     }
 
-    private void sort(int index) { // one case will execute in these cases 1 or 2 or 3 depend on the index number;
+    private void sort(int index) {
         try {
             switch (index) {
-                case 1: {
+                case 1: // Sortiranje po imenu ili ID-ju
                     pre = con.prepareStatement(sql1);
                     res = pre.executeQuery();
                     druglist.setModel(DbUtils.resultSetToTableModel(res));
-                }
-                break;
-                case 2: {
+                    break;
+                case 2: // Sortiranje po tipu
                     pre = con.prepareStatement(sql2);
                     res = pre.executeQuery();
                     druglist.setModel(DbUtils.resultSetToTableModel(res));
-                }
-                break;
+                    break;
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);

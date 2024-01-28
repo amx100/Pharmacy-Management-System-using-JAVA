@@ -310,7 +310,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Supplier Purchase");
+        jLabel1.setText("Supplier Purchase Details");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -318,7 +318,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(535, 535, 535)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -584,7 +584,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
             if (res.next()) {
                 String DrugId = res.getString("DRUG_ID");
                 txtDrugID.setText(DrugId);
-         }
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
@@ -592,6 +592,10 @@ public class SupplierPurchase extends javax.swing.JFrame {
 
     private void sort_byItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sort_byItemStateChanged
         switch (sort_by.getSelectedIndex()) { // one case will execute in these cases
+            case 0: // Sortiraj po ID-ju kada je selektovan nulti indeks
+                sql1 = "SELECT DRUG_ID, NAME , TYPE  FROM drugs ORDER BY DRUG_ID";
+                sort(1); // Pozivamo sort metodu sa indeksom 1 kako bismo pokrenuli sortiranje po ID-ju
+                break;
             case 1: {
                 sql1 = "select DRUG_ID, NAME , TYPE    from drugs order by NAME";
                 sort(1);
@@ -701,7 +705,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
     }
-    
+
     private void refresdrug_list() { // this method will be executed when you click on drug_list
         String sql = "select DRUG_ID, NAME , TYPE  from drugs"; // get data from database
         try {
