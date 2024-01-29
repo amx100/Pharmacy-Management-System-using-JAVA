@@ -156,6 +156,11 @@ public class SupplierPurchase extends javax.swing.JFrame {
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-clear-24.png"))); // NOI18N
         btnClear.setText("Clear");
         btnClear.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -609,6 +614,10 @@ public class SupplierPurchase extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sort_byItemStateChanged
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+       clear();
+    }//GEN-LAST:event_btnClearActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -754,6 +763,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
         txtSupplierID.setText("");
         txtDrugID.setText("");
         txtCostPrice.setText("");
+        boxQuantity.setSelectedIndex(0);
     }
 
 }

@@ -4,11 +4,14 @@
  */
 package main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -20,11 +23,19 @@ public class FinancialTransaction extends javax.swing.JFrame {
     Connection con = null;
     PreparedStatement pre = null;
     ResultSet res = null;
+    private Timer timer;
 
     public FinancialTransaction() {
         initComponents();
         con = Connect.connect();
         refreshFinancialTransactionsTable();
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshFinancialTransactionsTable();
+            }
+        });
+        timer.start();
     }
 
     /**
@@ -182,18 +193,16 @@ public class FinancialTransaction extends javax.swing.JFrame {
     }
 
     private void refreshFinancialTransactionsTable() {
-        try {
-            String sql = "SELECT * FROM financial_transactions";
-            try (PreparedStatement pre = con.prepareStatement(sql); ResultSet resultSet = pre.executeQuery()) {
-                f_transactions.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }
+        String sql = "SELECT * FROM financial_transactions";
+        try (PreparedStatement pre = con.prepareStatement(sql); ResultSet resultSet = pre.executeQuery()) {
+            f_transactions.setModel(DbUtils.resultSetToTableModel(resultSet));
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error refreshing capital table: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error refreshing financial transactions table: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTable f_transactions;
+    public static javax.swing.JTable f_transactions;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

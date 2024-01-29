@@ -10,13 +10,15 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static main.Login.txtName;
+import net.proteanit.sql.DbUtils;
 
 public class Pharmacy extends javax.swing.JFrame {
-    
+
     Connection con = null;
     PreparedStatement pre = null;
     ResultSet res = null;
@@ -32,7 +34,8 @@ public class Pharmacy extends javax.swing.JFrame {
     static FinancialTransaction transaction;
     Date d;
     SimpleDateFormat dd;
-    
+    private Timer capitalTimer;
+
     public Pharmacy() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Pharmacy.class.getResource("/img/Untitled.png")));
         initComponents();
@@ -50,8 +53,15 @@ public class Pharmacy extends javax.swing.JFrame {
         transaction = new FinancialTransaction();
         lbl_LoginAs.setText(Login.NAME);
         lbl_Type.setText(Login.TYPE);
-        updateCapitalLabelOnOtherForm();
-        
+
+        capitalTimer = new Timer(4000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateCapitalLabelOnOtherForm();
+            }
+        });
+        capitalTimer.start();
+
     }
 
     /**
@@ -99,7 +109,6 @@ public class Pharmacy extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         lblCurrentCapitalOnOtherForm = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pharmacy Management");
@@ -372,16 +381,6 @@ public class Pharmacy extends javax.swing.JFrame {
         lblCurrentCapitalOnOtherForm.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
         lblCurrentCapitalOnOtherForm.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-exchange-dollar-32.png"))); // NOI18N
-        jButton1.setText("Refresh ");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -422,12 +421,9 @@ public class Pharmacy extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(today, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
         jPanel3Layout.setVerticalGroup(
@@ -469,8 +465,6 @@ public class Pharmacy extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCurrentCapitalOnOtherForm, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -496,110 +490,106 @@ public class Pharmacy extends javax.swing.JFrame {
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
-    
+
     private void btnSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSettingsActionPerformed
         settings();
     }//GEN-LAST:event_btnSettingsActionPerformed
-    
+
     private void btnSearchDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDrugActionPerformed
         new Search_Drug().setVisible(true);
     }//GEN-LAST:event_btnSearchDrugActionPerformed
-    
+
     private void btnAddDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDrugActionPerformed
         drug.setVisible(true);
     }//GEN-LAST:event_btnAddDrugActionPerformed
-    
+
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         user.setVisible(true);
     }//GEN-LAST:event_btnAddUserActionPerformed
-    
+
     private void btnDrugsDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrugsDetActionPerformed
         enterdrugs();
     }//GEN-LAST:event_btnDrugsDetActionPerformed
-    
+
     private void btnUserDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDetActionPerformed
-        
+
         if ("Admin".equals(Login.TYPE)) {
             enteruser();
         } else {
             JOptionPane.showMessageDialog(this, "You do not have permission to enter this field", "Access Denied", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnUserDetActionPerformed
-    
+
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
-    
+
     private void btnExpiredDrugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExpiredDrugsActionPerformed
         new Expired_Drug().setVisible(true);
     }//GEN-LAST:event_btnExpiredDrugsActionPerformed
-    
+
     private void btnAlmostFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmostFActionPerformed
         new Almost_Finish().setVisible(true);
     }//GEN-LAST:event_btnAlmostFActionPerformed
-    
+
     private void btnCustomerDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDetActionPerformed
         entercustomer();
     }//GEN-LAST:event_btnCustomerDetActionPerformed
-    
+
     private void btnPurchaseDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseDetActionPerformed
         enterpurchase();
     }//GEN-LAST:event_btnPurchaseDetActionPerformed
-    
+
     private void btnPurchaseHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseHActionPerformed
         purchaseHistory.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         purchaseHistory.setVisible(true);
     }//GEN-LAST:event_btnPurchaseHActionPerformed
-    
+
     private void btnCreateBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBillActionPerformed
         buydrug.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         buydrug.setVisible(true);
     }//GEN-LAST:event_btnCreateBillActionPerformed
-    
+
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
-        
+
         customer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         customer.setVisible(true);
     }//GEN-LAST:event_btnAddCustomerActionPerformed
-    
+
     private void btnSupplierDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierDetActionPerformed
         entersupplier();
     }//GEN-LAST:event_btnSupplierDetActionPerformed
-    
+
     private void btnAddSupplierPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierPurchaseActionPerformed
         supplierPurchase.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         supplierPurchase.setVisible(true);
     }//GEN-LAST:event_btnAddSupplierPurchaseActionPerformed
-    
+
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
         supplier.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         supplier.setVisible(true);
     }//GEN-LAST:event_btnAddSupplierActionPerformed
-    
+
     private void btnCapitalDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapitalDetActionPerformed
         entercapital();
     }//GEN-LAST:event_btnCapitalDetActionPerformed
-    
+
     private void btnFinancialTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinancialTransactionActionPerformed
         transaction.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         transaction.setVisible(true);
     }//GEN-LAST:event_btnFinancialTransactionActionPerformed
-    
+
     private void btnAddCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCapitalActionPerformed
         capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         capital.setVisible(true);
     }//GEN-LAST:event_btnAddCapitalActionPerformed
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        updateCapitalLabelOnOtherForm();
-    }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void updateCapitalLabelOnOtherForm() {
         Capital capitalForm = new Capital();
         double currentCapital = capitalForm.getCurrentCapital();
-        lblCurrentCapitalOnOtherForm.setText("" + currentCapital);
+        lblCurrentCapitalOnOtherForm.setText(String.format("%.2f", currentCapital));
     }
 
     /**
@@ -660,7 +650,6 @@ public class Pharmacy extends javax.swing.JFrame {
     private javax.swing.JButton btnSettings;
     private javax.swing.JButton btnSupplierDet;
     public javax.swing.JButton btnUserDet;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -682,7 +671,7 @@ public class Pharmacy extends javax.swing.JFrame {
         d = new Date();
         dd = new SimpleDateFormat("dd-MM-yyyy");
         today.setText(dd.format(d));
-        
+
         new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -692,9 +681,9 @@ public class Pharmacy extends javax.swing.JFrame {
             }
         }).start();
     }
-    
+
     private void buttonvis() {
-        
+
         btnAddUser.setVisible(false);
         btnAddDrug.setVisible(false);
         btnSearchDrug.setVisible(false);
@@ -708,9 +697,9 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddSupplierPurchase.setVisible(false);
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
-        
+
     }
-    
+
     private void entersupplier() {
         btnSupplierDet.setEnabled(false);
         btnCapitalDet.setEnabled(true);
@@ -732,9 +721,9 @@ public class Pharmacy extends javax.swing.JFrame {
         btnCreateBill.setVisible(false);
         btnPurchaseH.setVisible(false);
         btnLogout.setVisible(false);
-        
+
     }
-    
+
     private void entercapital() {
         btnCapitalDet.setEnabled(false);
         btnSupplierDet.setEnabled(true);
@@ -757,7 +746,7 @@ public class Pharmacy extends javax.swing.JFrame {
         btnPurchaseH.setVisible(false);
         btnLogout.setVisible(false);
     }
-    
+
     private void enteruser() {
         btnUserDet.setEnabled(false);
         btnDrugsDet.setEnabled(true);
@@ -779,9 +768,9 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddSupplierPurchase.setVisible(false);
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
-        
+
     }
-    
+
     private void enterdrugs() {
         btnDrugsDet.setEnabled(false);
         btnUserDet.setEnabled(true);
@@ -802,9 +791,9 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddSupplierPurchase.setVisible(false);
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
-        
+
     }
-    
+
     private void entercustomer() {
         btnCustomerDet.setEnabled(false);
         btnDrugsDet.setEnabled(true);
@@ -826,7 +815,7 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
     }
-    
+
     private void enterpurchase() {
         btnPurchaseDet.setEnabled(false);
         btnDrugsDet.setEnabled(true);
@@ -848,7 +837,7 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
     }
-    
+
     private void settings() {
         btnSettings.setEnabled(false);
         btnUserDet.setEnabled(true);
@@ -871,5 +860,5 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
     }
-    
+
 }
