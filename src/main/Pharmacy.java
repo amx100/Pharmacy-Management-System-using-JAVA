@@ -589,7 +589,7 @@ public class Pharmacy extends javax.swing.JFrame {
     private void updateCapitalLabelOnOtherForm() {
         Capital capitalForm = new Capital();
         double currentCapital = capitalForm.getCurrentCapital();
-        lblCurrentCapitalOnOtherForm.setText(String.format("%.2f", currentCapital));
+        lblCurrentCapitalOnOtherForm.setText(String.format("%.2f $", currentCapital));
     }
 
     /**
