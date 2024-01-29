@@ -100,6 +100,11 @@ public class Capital extends javax.swing.JFrame {
         btnUpdateCapital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-exchange-dollar-32.png"))); // NOI18N
         btnUpdateCapital.setText("Update Capital");
         btnUpdateCapital.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnUpdateCapital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateCapitalActionPerformed(evt);
+            }
+        });
 
         btnCancel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CRUD img/icons8-cancel-24.png"))); // NOI18N
@@ -384,6 +389,22 @@ public class Capital extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDeleteCapitalActionPerformed
+
+    private void btnUpdateCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateCapitalActionPerformed
+        String sql = "UPDATE capital SET CAPITAL_AMOUNT=?, DATE=? WHERE CAPITAL_ID=?";
+        try (PreparedStatement pre = con.prepareStatement(sql)) {
+            pre.setDouble(1, Double.parseDouble(txtCapitalAmount.getText()));
+            String date = boxYear.getSelectedItem() + "-" + boxMonth.getSelectedItem() + "-" + boxExp_day.getSelectedItem();
+            pre.setString(2, date);
+            pre.setInt(3, Integer.parseInt(txtCapital_ID.getText()));
+            pre.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Capital has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clear(); 
+            refreshCapitalTable(); 
+        } catch (SQLException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnUpdateCapitalActionPerformed
 
     /**
      * @param args the command line arguments
