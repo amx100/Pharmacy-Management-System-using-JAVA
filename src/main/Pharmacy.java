@@ -54,7 +54,7 @@ public class Pharmacy extends javax.swing.JFrame {
         lbl_LoginAs.setText(Login.NAME);
         lbl_Type.setText(Login.TYPE);
 
-        capitalTimer = new Timer(4000, new ActionListener() {
+        capitalTimer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateCapitalLabelOnOtherForm();
