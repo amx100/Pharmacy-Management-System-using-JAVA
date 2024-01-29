@@ -557,7 +557,22 @@ public class BuyDrug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddPurchaseActionPerformed
 
     private void purchaseHistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseHistoryTableMouseClicked
-        refreshPurchaseHistoryTable();
+        
+        int row = purchaseHistoryTable.getSelectedRow();
+        t = purchaseHistoryTable.getModel().getValueAt(row, 0).toString();
+        String sql = "SELECT * FROM pharmacy.purchase_history where PURCHASE_ID='" + t + "' ";
+
+        try {
+            pre = con.prepareStatement(sql);
+            res = pre.executeQuery();
+            if (res.next()) {
+                String PurchaseId = res.getString("PURCHASE_ID");
+                txtPurchaseID.setText(PurchaseId);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+        }
     }//GEN-LAST:event_purchaseHistoryTableMouseClicked
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked

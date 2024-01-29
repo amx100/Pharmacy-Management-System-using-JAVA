@@ -320,11 +320,11 @@ public class User extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("(1-) User_Password Should be at least 6 Charcters");
+        jLabel9.setText("1- User_Password Should be at least 6 Charcters");
 
         jLabel10.setFont(new java.awt.Font("Javanese Text", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("(2-) User_Name is Non-Adjustable , thanks");
+        jLabel10.setText("2- User_Name is Non-Adjustable , thanks");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
