@@ -399,8 +399,8 @@ public class Capital extends javax.swing.JFrame {
             pre.setInt(3, Integer.parseInt(txtCapital_ID.getText()));
             pre.executeUpdate();
             JOptionPane.showMessageDialog(null, "Capital has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            clear(); 
-            refreshCapitalTable(); 
+            clear();
+            refreshCapitalTable();
         } catch (SQLException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }

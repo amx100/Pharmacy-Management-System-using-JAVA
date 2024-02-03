@@ -38,13 +38,13 @@ public class Search_Drug extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        drugid = new javax.swing.JTextField();
+        txtSDrugID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
+        txtSName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         druglist = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        sort_by = new javax.swing.JComboBox<>();
+        comboboxDrugsSort_by = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -83,9 +83,9 @@ public class Search_Drug extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Drug_ID : ");
 
-        drugid.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSDrugID.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                drugidKeyReleased(evt);
+                txtSDrugIDKeyReleased(evt);
             }
         });
 
@@ -93,9 +93,9 @@ public class Search_Drug extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name : ");
 
-        name.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                nameKeyReleased(evt);
+                txtSNameKeyReleased(evt);
             }
         });
 
@@ -129,10 +129,10 @@ public class Search_Drug extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
 
-        sort_by.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By : ", "Name", "Type" }));
-        sort_by.addItemListener(new java.awt.event.ItemListener() {
+        comboboxDrugsSort_by.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By : ", "Name", "Type" }));
+        comboboxDrugsSort_by.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                sort_byItemStateChanged(evt);
+                comboboxDrugsSort_byItemStateChanged(evt);
             }
         });
 
@@ -148,7 +148,7 @@ public class Search_Drug extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(sort_by, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboboxDrugsSort_by, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -156,7 +156,7 @@ public class Search_Drug extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(sort_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboboxDrugsSort_by, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -170,11 +170,11 @@ public class Search_Drug extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSDrugID, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSName, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -189,9 +189,9 @@ public class Search_Drug extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(drugid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSDrugID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addGap(8, 8, 8))
@@ -231,8 +231,8 @@ public class Search_Drug extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void drugidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_drugidKeyReleased
-        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where DRUG_ID REGEXP '" + drugid.getText() + "' ";
+    private void txtSDrugIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDrugIDKeyReleased
+        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where DRUG_ID REGEXP '" + txtSDrugID.getText() + "' ";
         try {
             pre = con.prepareStatement(sql); // prepare statment sql usgin barcode (when you type barcode it will display the result automatic)
             res = pre.executeQuery();//execute the swl statement 
@@ -240,10 +240,10 @@ public class Search_Drug extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
-    }//GEN-LAST:event_drugidKeyReleased
+    }//GEN-LAST:event_txtSDrugIDKeyReleased
 
-    private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
-        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where NAME REGEXP '" + name.getText() + "' ";
+    private void txtSNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSNameKeyReleased
+        String sql = "select DRUG_ID,NAME,TYPE,SELLING_PRICE,EXPIRATION_DATE,QUANTITY from drugs where NAME REGEXP '" + txtSName.getText() + "' ";
         try {
             pre = con.prepareStatement(sql);// prepare statment sql usgin name (when you type name it will display the result automatic)
             res = pre.executeQuery();//execute the swl statement 
@@ -251,7 +251,7 @@ public class Search_Drug extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
-    }//GEN-LAST:event_nameKeyReleased
+    }//GEN-LAST:event_txtSNameKeyReleased
 
     private void druglistMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_druglistMouseClicked
         int row = druglist.getSelectedRow();
@@ -292,8 +292,8 @@ public class Search_Drug extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_druglistMouseClicked
 
-    private void sort_byItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_sort_byItemStateChanged
-        switch (sort_by.getSelectedIndex()) {
+    private void comboboxDrugsSort_byItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboboxDrugsSort_byItemStateChanged
+        switch (comboboxDrugsSort_by.getSelectedIndex()) {
             case 0: // Sortiraj po ID-ju kada je selektovan nulti indeks
                 sql1 = "SELECT DRUG_ID, NAME , TYPE ,SELLING_PRICE,EXPIRATION_DATE,QUANTITY FROM drugs ORDER BY DRUG_ID";
                 sort(1); // Pozivamo sort metodu sa indeksom 1 kako bismo pokrenuli sortiranje po ID-ju
@@ -307,7 +307,7 @@ public class Search_Drug extends javax.swing.JFrame {
                 sort(2);
                 break;
         }
-    }//GEN-LAST:event_sort_byItemStateChanged
+    }//GEN-LAST:event_comboboxDrugsSort_byItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -345,7 +345,7 @@ public class Search_Drug extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField drugid;
+    private javax.swing.JComboBox<String> comboboxDrugsSort_by;
     public static javax.swing.JTable druglist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -356,8 +356,8 @@ public class Search_Drug extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField name;
-    private javax.swing.JComboBox<String> sort_by;
+    private javax.swing.JTextField txtSDrugID;
+    private javax.swing.JTextField txtSName;
     // End of variables declaration//GEN-END:variables
 
     private void drug_list() { // this method will be executed when you click on drug_list

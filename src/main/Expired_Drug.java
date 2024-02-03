@@ -3,8 +3,19 @@ package main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class Expired_Drug extends javax.swing.JFrame {
 
@@ -15,7 +26,7 @@ public class Expired_Drug extends javax.swing.JFrame {
     public Expired_Drug() {
         initComponents();
         con = Connect.connect();
-        show_table();
+        refreshExpiredDrugTable();
     }
 
     /**
@@ -33,6 +44,7 @@ public class Expired_Drug extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         expired_list = new javax.swing.JTable();
+        btnPrintExpiredDrug = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Expired Drugs");
@@ -44,7 +56,7 @@ public class Expired_Drug extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Expired_Drugs");
+        jLabel1.setText("Expired Drugs");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -75,7 +87,7 @@ public class Expired_Drug extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "          Drug ID", "         Drug Name", "   Expiration_Date"
+                "          Drug ID", "         Drug Name", "   Expiration Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -88,21 +100,37 @@ public class Expired_Drug extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(expired_list);
 
+        btnPrintExpiredDrug.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnPrintExpiredDrug.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-24.png"))); // NOI18N
+        btnPrintExpiredDrug.setText("Print");
+        btnPrintExpiredDrug.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnPrintExpiredDrug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintExpiredDrugActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPrintExpiredDrug, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPrintExpiredDrug, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -119,9 +147,9 @@ public class Expired_Drug extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,12 +160,33 @@ public class Expired_Drug extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(630, 484));
+        setSize(new java.awt.Dimension(641, 566));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrintExpiredDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintExpiredDrugActionPerformed
+        try {
+            // Assuming that con is your database connection
+            String sql = "SELECT DRUG_ID, NAME,  EXPIRATION_DATE, QUANTITY FROM drugs WHERE EXPIRATION_DATE < CURDATE()";
+
+            try (PreparedStatement pre = con.prepareStatement(sql); ResultSet res = pre.executeQuery()) {
+
+                // Call the modified generateReport method with the prepared statement
+                generateReport(pre);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (NumberFormatException e) {
+            // Handle the case where the input is not a valid integer
+            JOptionPane.showMessageDialog(this, "Please enter a valid numeric Purchase ID.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnPrintExpiredDrugActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,6 +227,7 @@ public class Expired_Drug extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPrintExpiredDrug;
     private javax.swing.JTable expired_list;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -185,7 +235,42 @@ public class Expired_Drug extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    private void show_table() { // when you click  expired drug this eill be executed
+
+    public static void generateReport(PreparedStatement preparedStatement) {
+        Connection con = null;
+        try {
+            // Load the compiled JasperReport (.jasper) file
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Ahmed\\Desktop\\Pharma\\Pharmacy-Management-System-master\\src\\Reports\\ExpiredDrugsReport.jasper");
+
+            // Create a Map of parameters
+            Map<String, Object> parameters = new HashMap<>();
+
+            // Get a database connection (replace with your actual database connection code)
+            con = preparedStatement.getConnection();
+
+            // Execute the SQL query using the provided PreparedStatement
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                // Create a JRResultSetDataSource with the ResultSet
+                JRResultSetDataSource resultSetDataSource = new JRResultSetDataSource(resultSet);
+
+                // Fill the JasperReport with data from the ResultSet
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, resultSetDataSource);
+
+                // Display the JasperReport in a JasperViewer
+                JasperViewer viewer = new JasperViewer(jasperPrint, false);
+                viewer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Set to dispose on close, not exit
+
+                // Make the viewer visible
+                viewer.setVisible(true);
+            }
+        } catch (SQLException | JRException e) {
+            e.printStackTrace();
+        } finally {
+            // Do not close the connection here; let it be managed outside this method
+        }
+    }
+
+    private void refreshExpiredDrugTable() { // when you click  expired drug this eill be executed
         String sql = "SELECT DRUG_ID, NAME,  EXPIRATION_DATE, QUANTITY FROM drugs WHERE EXPIRATION_DATE < CURDATE()";
         try {
             pre = con.prepareStatement(sql);

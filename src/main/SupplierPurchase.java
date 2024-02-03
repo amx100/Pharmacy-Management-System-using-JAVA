@@ -615,7 +615,7 @@ public class SupplierPurchase extends javax.swing.JFrame {
     }//GEN-LAST:event_sort_byItemStateChanged
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-       clear();
+        clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
     /**

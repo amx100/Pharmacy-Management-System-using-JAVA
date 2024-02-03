@@ -67,7 +67,7 @@ public class BuyDrug extends javax.swing.JFrame {
         btnClear = new javax.swing.JButton();
         txtPurchaseID = new javax.swing.JTextField();
         lblPurchaseID = new javax.swing.JLabel();
-        btnPrint = new javax.swing.JButton();
+        btnPrintBill = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCustomers = new javax.swing.JTable();
@@ -85,8 +85,6 @@ public class BuyDrug extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         purchaseHistoryTable = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -146,12 +144,12 @@ public class BuyDrug extends javax.swing.JFrame {
         lblPurchaseID.setForeground(new java.awt.Color(255, 255, 255));
         lblPurchaseID.setText("Purchase ID");
 
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-24.png"))); // NOI18N
-        btnPrint.setText("Print Bill");
-        btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+        btnPrintBill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-print-24.png"))); // NOI18N
+        btnPrintBill.setText("Print Bill");
+        btnPrintBill.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnPrintBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
+                btnPrintBillActionPerformed(evt);
             }
         });
 
@@ -178,7 +176,7 @@ public class BuyDrug extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDeletePurchase, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPrintBill, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddPurchase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -200,7 +198,7 @@ public class BuyDrug extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
                         .addComponent(txtDrugID, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPrintBill, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -275,7 +273,7 @@ public class BuyDrug extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(txtCustomerUrncSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 58, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -288,9 +286,9 @@ public class BuyDrug extends javax.swing.JFrame {
                     .addComponent(txtCustomerIDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(txtCustomerUrncSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 51));
@@ -360,7 +358,7 @@ public class BuyDrug extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -413,38 +411,15 @@ public class BuyDrug extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addContainerGap())
-        );
-
-        jPanel6.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText(" Purchase  Details");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(528, 528, 528))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel4)
-                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -452,47 +427,44 @@ public class BuyDrug extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(34, 34, 34))
+                        .addGap(32, 32, 32))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(165, 165, 165)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31))
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(23, 23, 23))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -533,7 +505,7 @@ public class BuyDrug extends javax.swing.JFrame {
 
                     if (rowsAffected > 0) {
                         JOptionPane.showMessageDialog(null, "Purchase has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                        clear();
+                        clearPurchaseFields();
                         refreshPurchaseHistoryTable();
                         refreshDrugTable();
                     } else {
@@ -557,7 +529,7 @@ public class BuyDrug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddPurchaseActionPerformed
 
     private void purchaseHistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseHistoryTableMouseClicked
-        
+
         int row = purchaseHistoryTable.getSelectedRow();
         t = purchaseHistoryTable.getModel().getValueAt(row, 0).toString();
         String sql = "SELECT * FROM pharmacy.purchase_history where PURCHASE_ID='" + t + "' ";
@@ -606,7 +578,7 @@ public class BuyDrug extends javax.swing.JFrame {
                         pre.execute();
                         JOptionPane.showMessageDialog(null, "Purchase has been deleted Successfully", "Success Operation", 1);
 
-                        clear();
+                        clearPurchaseFields();
                         refreshPurchaseHistoryTable();
                         refreshDrugTable();
                     }
@@ -618,7 +590,7 @@ public class BuyDrug extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletePurchaseActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        clear();
+        clearPurchaseFields();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtCustomerIDSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerIDSearchKeyReleased
@@ -665,7 +637,7 @@ public class BuyDrug extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nameKeyReleased
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+    private void btnPrintBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintBillActionPerformed
         try {
             // Check if the purchase ID field is not empty
             if (txtPurchaseID.getText().trim().isEmpty()) {
@@ -714,7 +686,7 @@ public class BuyDrug extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter a valid numeric Purchase ID.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btnPrintActionPerformed
+    }//GEN-LAST:event_btnPrintBillActionPerformed
 
     /**
      * @param args the command line arguments
@@ -759,6 +731,41 @@ public class BuyDrug extends javax.swing.JFrame {
         });
     }
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxQuantity;
+    private javax.swing.JButton btnAddPurchase;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDeletePurchase;
+    private javax.swing.JButton btnPrintBill;
+    private javax.swing.JLabel customerid;
+    private javax.swing.JTextField drugid;
+    public static javax.swing.JTable druglist;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblPurchaseID;
+    private javax.swing.JTextField name;
+    private javax.swing.JTable purchaseHistoryTable;
+    private javax.swing.JTable tblCustomers;
+    private javax.swing.JTextField txtCustomerIDSearch;
+    public static javax.swing.JTextField txtCustomerId;
+    private javax.swing.JTextField txtCustomerUrncSearch;
+    public javax.swing.JTextField txtDrugID;
+    public static javax.swing.JTextField txtPurchaseID;
+    // End of variables declaration//GEN-END:variables
+
     private void refreshTables() {
         refreshCustomerTable();
         refreshDrugTable();
@@ -766,7 +773,7 @@ public class BuyDrug extends javax.swing.JFrame {
     }
 
     private void refreshPurchaseHistoryTable() {
-        String sql = "SELECT * FROM pharmacy.purchase_history";
+           String sql = "SELECT * FROM pharmacy.purchase_history";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
@@ -777,7 +784,7 @@ public class BuyDrug extends javax.swing.JFrame {
     }
 
     private void refreshCustomerTable() {
-        String sql = "select CUSTOMER_ID, FIRST_NAME, LAST_NAME,DOB,URNC from customers";
+        String sql = "select CUSTOMER_ID, FIRST_NAME, LAST_NAME, DOB, URNC from customers";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
@@ -788,7 +795,7 @@ public class BuyDrug extends javax.swing.JFrame {
     }
 
     private void refreshDrugTable() {
-        String sql = "select DRUG_ID, NAME, TYPE,  SELLING_PRICE, EXPIRATION_DATE, QUANTITY from drugs";
+        String sql = "select DRUG_ID, NAME, TYPE, SELLING_PRICE, EXPIRATION_DATE, QUANTITY from drugs";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
@@ -798,7 +805,7 @@ public class BuyDrug extends javax.swing.JFrame {
         }
     }
 
-    private void clear() {
+    private void clearPurchaseFields() {
         txtPurchaseID.setText("");
         txtCustomerId.setText("");
         txtDrugID.setText("");
@@ -809,7 +816,7 @@ public class BuyDrug extends javax.swing.JFrame {
         Connection con = null;
         try {
             // Load the compiled JasperReport (.jasper) file
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Ahmed\\Desktop\\Pharma\\Pharmacy-Management-System-master\\src\\main\\NewBill.jasper");
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\Ahmed\\Desktop\\Pharma\\Pharmacy-Management-System-master\\src\\Reports\\NewBill.jasper");
 
             // Create a Map of parameters
             Map<String, Object> parameters = new HashMap<>();
@@ -838,41 +845,4 @@ public class BuyDrug extends javax.swing.JFrame {
             // Do not close the connection here; let it be managed outside this method
         }
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxQuantity;
-    private javax.swing.JButton btnAddPurchase;
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDeletePurchase;
-    private javax.swing.JButton btnPrint;
-    private javax.swing.JLabel customerid;
-    private javax.swing.JTextField drugid;
-    public static javax.swing.JTable druglist;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel lblPurchaseID;
-    private javax.swing.JTextField name;
-    private javax.swing.JTable purchaseHistoryTable;
-    private javax.swing.JTable tblCustomers;
-    private javax.swing.JTextField txtCustomerIDSearch;
-    public static javax.swing.JTextField txtCustomerId;
-    private javax.swing.JTextField txtCustomerUrncSearch;
-    public javax.swing.JTextField txtDrugID;
-    public static javax.swing.JTextField txtPurchaseID;
-    // End of variables declaration//GEN-END:variables
-
 }

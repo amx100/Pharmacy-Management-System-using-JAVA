@@ -31,7 +31,7 @@ public class Customer extends javax.swing.JFrame {
     public Customer() {
         initComponents();
         con = Connect.connect();
-        refresh();
+        refreshCustomerTable();
     }
 
     /**
@@ -426,7 +426,7 @@ public class Customer extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
-        clear();
+        clearCustomerFields();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
@@ -443,8 +443,8 @@ public class Customer extends javax.swing.JFrame {
                     pre.setString(4, txtURNC.getText());
                     pre.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Customer has been Added Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    clear();
-                    refresh();
+                    clearCustomerFields();
+                    refreshCustomerTable();
                 }
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -489,7 +489,7 @@ public class Customer extends javax.swing.JFrame {
     private void btnDeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCustomerActionPerformed
         if (customerId.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Enter ID You Want to delete", "Missing Information", 2);
-        } else if (checkid()) {
+        } else if (checkCustomerID()) {
             String sql = "delete from customers where CUSTOMER_ID='" + customerId.getText() + "' ";
             try {
                 int check = JOptionPane.showConfirmDialog(null, "Are You Want Delete This Customer");
@@ -501,8 +501,8 @@ public class Customer extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
             }
-            refresh();
-            clear();
+            refreshCustomerTable();
+            clearCustomerFields();
         } else {
             JOptionPane.showMessageDialog(null, "Customer is not Found", "Wrong Operation", 2);
         }
@@ -526,8 +526,8 @@ public class Customer extends javax.swing.JFrame {
             pre.setString(5, customerId.getText());
             pre.executeUpdate();
             JOptionPane.showMessageDialog(null, "Customer has been updated Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            clear();
-            refresh();
+            clearCustomerFields();
+            refreshCustomerTable();
         } catch (SQLException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -594,7 +594,7 @@ public class Customer extends javax.swing.JFrame {
         });
     }
 
-    private boolean checkid() {
+    private boolean checkCustomerID() {
         boolean check = false;
         String sql = "select CUSTOMER_ID from customers where CUSTOMER_ID='" + customerId.getText() + "' ";
         try {
@@ -609,7 +609,7 @@ public class Customer extends javax.swing.JFrame {
         return check;
     }
 
-    private void clear() {
+    private void clearCustomerFields() {
         customerId.setText("");
         firstNameField.setText("");
         lastNameField.setText("");
@@ -619,7 +619,7 @@ public class Customer extends javax.swing.JFrame {
         txtURNC.setText("");
     }
 
-    private void refresh() {
+    private void refreshCustomerTable() {
         String sql = "select CUSTOMER_ID,FIRST_NAME,LAST_NAME,DOB,URNC from customers";
         try {
             pre = con.prepareStatement(sql);
