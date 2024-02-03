@@ -23,6 +23,7 @@ import static main.Customer.lastNameField;
 import static main.Customer.month;
 import static main.Customer.txtURNC;
 import static main.Customer.year;
+import static main.FinancialTransaction.f_transactions;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -92,7 +93,7 @@ public class BuyDrug extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        purchaseHistoryTable = new javax.swing.JTable();
+        purchase_historyList = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -304,7 +305,7 @@ public class BuyDrug extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(txtCustomerUrncSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 69, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -389,7 +390,7 @@ public class BuyDrug extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 137, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -409,8 +410,8 @@ public class BuyDrug extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        purchaseHistoryTable.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        purchaseHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
+        purchase_historyList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        purchase_historyList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -429,18 +430,18 @@ public class BuyDrug extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        purchaseHistoryTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        purchase_historyList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                purchaseHistoryTableMouseClicked(evt);
+                purchase_historyListMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(purchaseHistoryTable);
+        jScrollPane3.setViewportView(purchase_historyList);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
                 .addContainerGap())
@@ -462,14 +463,14 @@ public class BuyDrug extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(32, 32, 32))
+                        .addGap(68, 68, 68))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(165, 165, 165)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,6 +791,8 @@ public class BuyDrug extends javax.swing.JFrame {
                         clearPurchaseFields();
                         refreshPurchaseHistoryTable();
                         refreshDrugTable();
+                        refreshFinancialTransactionsTable();
+
                     } else {
                         JOptionPane.showMessageDialog(this, "No rows were affected. Check your input values or database connection.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -810,10 +813,10 @@ public class BuyDrug extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddPurchaseActionPerformed
 
-    private void purchaseHistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseHistoryTableMouseClicked
+    private void purchase_historyListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchase_historyListMouseClicked
 
-        int row = purchaseHistoryTable.getSelectedRow();
-        t = purchaseHistoryTable.getModel().getValueAt(row, 0).toString();
+        int row = purchase_historyList.getSelectedRow();
+        t = purchase_historyList.getModel().getValueAt(row, 0).toString();
         String sql = "SELECT * FROM pharmacy.purchase_history where PURCHASE_ID='" + t + "' ";
 
         try {
@@ -827,7 +830,7 @@ public class BuyDrug extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
-    }//GEN-LAST:event_purchaseHistoryTableMouseClicked
+    }//GEN-LAST:event_purchase_historyListMouseClicked
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
         int row = tblCustomers.getSelectedRow();
@@ -1140,7 +1143,7 @@ public class BuyDrug extends javax.swing.JFrame {
     private javax.swing.JLabel lblUrnc;
     public static javax.swing.JComboBox<String> month;
     private javax.swing.JTextField name;
-    private javax.swing.JTable purchaseHistoryTable;
+    private javax.swing.JTable purchase_historyList;
     private javax.swing.JTable tblCustomers;
     private javax.swing.JTextField txtCustomerIDSearch;
     public static javax.swing.JTextField txtCustomerId;
@@ -1182,12 +1185,21 @@ public class BuyDrug extends javax.swing.JFrame {
         txtURNC.setText("");
     }
 
+    private void refreshFinancialTransactionsTable() {
+        String sql = "SELECT * FROM financial_transactions";
+        try (PreparedStatement pre = con.prepareStatement(sql); ResultSet resultSet = pre.executeQuery()) {
+            f_transactions.setModel(DbUtils.resultSetToTableModel(resultSet));
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error refreshing financial transactions table: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     private void refreshPurchaseHistoryTable() {
         String sql = "SELECT * FROM pharmacy.purchase_history";
         try {
             pre = con.prepareStatement(sql);
             res = pre.executeQuery();
-            purchaseHistoryTable.setModel(DbUtils.resultSetToTableModel(res));
+            purchase_historyList.setModel(DbUtils.resultSetToTableModel(res));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }

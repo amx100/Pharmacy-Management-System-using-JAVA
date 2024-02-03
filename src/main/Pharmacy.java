@@ -535,7 +535,7 @@ public class Pharmacy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlmostFActionPerformed
 
     private void btnCustomerDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerDetActionPerformed
-        entercustomer();
+        entercustomer();    
     }//GEN-LAST:event_btnCustomerDetActionPerformed
 
     private void btnPurchaseDetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseDetActionPerformed
@@ -553,7 +553,7 @@ public class Pharmacy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateBillActionPerformed
 
     private void btnAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCustomerActionPerformed
-
+        
         customer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         customer.setVisible(true);
     }//GEN-LAST:event_btnAddCustomerActionPerformed
@@ -583,7 +583,7 @@ public class Pharmacy extends javax.swing.JFrame {
 
     private void btnAddCapitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCapitalActionPerformed
         capital.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        capital.setVisible(true);
+        capital.setVisible(true);    
     }//GEN-LAST:event_btnAddCapitalActionPerformed
 
     private void updateCapitalLabelOnOtherForm() {
@@ -860,5 +860,5 @@ public class Pharmacy extends javax.swing.JFrame {
         btnAddCapital.setVisible(false);
         btnFinancialTransaction.setVisible(false);
     }
-
+    
 }

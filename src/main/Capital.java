@@ -459,7 +459,7 @@ public class Capital extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCapital;
+    public static javax.swing.JTable tblCapital;
     private javax.swing.JTextField txtCapitalAmount;
     private javax.swing.JTextField txtCapital_ID;
     // End of variables declaration//GEN-END:variables

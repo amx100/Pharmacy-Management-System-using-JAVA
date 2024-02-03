@@ -24,7 +24,7 @@ public class PurchaseHistory extends javax.swing.JFrame {
     public PurchaseHistory() {
         initComponents();
         con = Connect.connect();
-        purchase_history_list();
+        refreshPurchaseHistoryTable();
     }
 
     /**
@@ -185,7 +185,7 @@ public class PurchaseHistory extends javax.swing.JFrame {
         });
     }
 
-    private void purchase_history_list() { // this method will be executed when you click on drug_list
+    private void refreshPurchaseHistoryTable() { // this method will be executed when you click on drug_list
         String sql = "select PURCHASE_ID , CUSTOMER_ID ,DRUG_ID,PURCHASE_DATE,QUANTITY_SOLD , TOTAL_BILL from purchase_history"; // get data from database
         try {
             pre = con.prepareStatement(sql); // prepare sql statement
@@ -202,6 +202,6 @@ public class PurchaseHistory extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable purchase_historyList;
+    public static javax.swing.JTable purchase_historyList;
     // End of variables declaration//GEN-END:variables
 }

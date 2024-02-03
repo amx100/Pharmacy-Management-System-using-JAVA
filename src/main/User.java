@@ -459,6 +459,7 @@ public class User extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteuserActionPerformed
 
     private void updateuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateuserActionPerformed
+
         if (txtUserId.getText().isEmpty() || (txtUserPassword.getText().isEmpty() && boxType.getSelectedItem() == null)) {
             JOptionPane.showMessageDialog(null, "Complete Your Information", "Missing Information", JOptionPane.ERROR_MESSAGE);
         } else {
