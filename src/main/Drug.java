@@ -40,7 +40,7 @@ public class Drug extends javax.swing.JFrame {
                 this.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent evt) {
-                                // Release connection resources properly
+                                // Release resources properly, but do not close the connection
                                 ConnectionManager.closeResources(res, pre);
                                 ConnectionManager.releaseConnection();
                         }

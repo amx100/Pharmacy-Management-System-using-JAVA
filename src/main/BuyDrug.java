@@ -61,7 +61,12 @@ public class BuyDrug extends javax.swing.JFrame implements TableUpdateListener {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
+                // Make sure to unregister the listener when form closes
                 TableUpdateManager.getInstance().removeListener(BuyDrug.this);
+
+                // Release resources but don't close the connection
+                ConnectionManager.closeResources(res, pre);
+                ConnectionManager.releaseConnection();
             }
         });
     }
@@ -921,9 +926,24 @@ public class BuyDrug extends javax.swing.JFrame implements TableUpdateListener {
                 res.close();
             }
 
-            pre = con.prepareStatement(sql);
-            res = pre.executeQuery();
-            purchase_historyList.setModel(DbUtils.resultSetToTableModel(res));
+            try {
+                // Check if connection is still valid
+                if (con == null || con.isClosed()) {
+                    con = ConnectionManager.getConnection();
+                }
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                purchase_historyList.setModel(DbUtils.resultSetToTableModel(res));
+            } catch (SQLException e) {
+                // If connection is invalid, get a new one and retry
+                ConnectionManager.markConnectionInvalid();
+                con = ConnectionManager.getConnection();
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                purchase_historyList.setModel(DbUtils.resultSetToTableModel(res));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
@@ -939,9 +959,24 @@ public class BuyDrug extends javax.swing.JFrame implements TableUpdateListener {
                 res.close();
             }
 
-            pre = con.prepareStatement(sql);
-            res = pre.executeQuery();
-            tblCustomers.setModel(DbUtils.resultSetToTableModel(res));
+            try {
+                // Check if connection is still valid
+                if (con == null || con.isClosed()) {
+                    con = ConnectionManager.getConnection();
+                }
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                tblCustomers.setModel(DbUtils.resultSetToTableModel(res));
+            } catch (SQLException e) {
+                // If connection is invalid, get a new one and retry
+                ConnectionManager.markConnectionInvalid();
+                con = ConnectionManager.getConnection();
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                tblCustomers.setModel(DbUtils.resultSetToTableModel(res));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }
@@ -957,9 +992,24 @@ public class BuyDrug extends javax.swing.JFrame implements TableUpdateListener {
                 res.close();
             }
 
-            pre = con.prepareStatement(sql);
-            res = pre.executeQuery();
-            druglist.setModel(DbUtils.resultSetToTableModel(res));
+            try {
+                // Check if connection is still valid
+                if (con == null || con.isClosed()) {
+                    con = ConnectionManager.getConnection();
+                }
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                druglist.setModel(DbUtils.resultSetToTableModel(res));
+            } catch (SQLException e) {
+                // If connection is invalid, get a new one and retry
+                ConnectionManager.markConnectionInvalid();
+                con = ConnectionManager.getConnection();
+
+                pre = con.prepareStatement(sql);
+                res = pre.executeQuery();
+                druglist.setModel(DbUtils.resultSetToTableModel(res));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
         }

@@ -18,23 +18,28 @@ public class Connect {
 
             // Add connection pooling properties
             props.setProperty("autoReconnect", "true");
-            props.setProperty("maxReconnects", "3");
+            props.setProperty("maxReconnects", "5");
             props.setProperty("initialTimeout", "2");
-            props.setProperty("maxIdle", "25");
-            props.setProperty("maxActive", "10");
-            props.setProperty("maxWait", "30000");
-            props.setProperty("removeAbandoned", "true");
-            props.setProperty("removeAbandonedTimeout", "60");
+
+            // Connection pool size parameters
+            props.setProperty("connectTimeout", "10000");
+            props.setProperty("socketTimeout", "30000");
+
+            // Ensure connections are validated before use
+            props.setProperty("testOnBorrow", "true");
+            props.setProperty("validationQuery", "SELECT 1");
+            props.setProperty("testWhileIdle", "true");
 
             // Add timezone configuration to avoid potential timezone issues
-            String url = "jdbc:mysql://localhost/pharmacy?useSSL=false&serverTimezone=UTC";
+            String url = "jdbc:mysql://localhost/pharmacy?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
             Connection con = DriverManager.getConnection(url, props);
 
             if (con != null) {
                 return con;
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+            JOptionPane.showMessageDialog(null, "Database connection error: " + e.getMessage(), "Connection Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }

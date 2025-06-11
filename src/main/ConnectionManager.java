@@ -14,6 +14,7 @@ public class ConnectionManager {
 
     private static Connection sharedConnection = null;
     private static int connectionUsageCount = 0;
+    private static boolean connectionValid = true;
 
     /**
      * Get a shared database connection to reduce the number of open connections.
@@ -21,8 +22,16 @@ public class ConnectionManager {
      * @return The shared database connection
      */
     public static synchronized Connection getConnection() {
-        if (sharedConnection == null) {
+        try {
+            // Check if connection is closed or invalid and recreate if needed
+            if (sharedConnection == null || sharedConnection.isClosed() || !connectionValid) {
+                sharedConnection = Connect.connect();
+                connectionValid = true;
+            }
+        } catch (SQLException e) {
+            // If there's an error checking connection status, get a new connection
             sharedConnection = Connect.connect();
+            connectionValid = true;
         }
 
         connectionUsageCount++;
@@ -39,25 +48,35 @@ public class ConnectionManager {
 
             // Only close the connection when no forms are using it
             if (connectionUsageCount <= 0) {
-                closeConnection();
+                // Don't actually close the connection, just reset the counter
                 connectionUsageCount = 0;
             }
         }
     }
 
     /**
-     * Close the shared database connection.
+     * Force close the shared database connection. Should only be used when shutting
+     * down the application.
      */
     public static synchronized void closeConnection() {
         if (sharedConnection != null) {
             try {
                 sharedConnection.close();
-                sharedConnection = null;
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error closing database connection: " + e.getMessage(), "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                // Silently handle exception
+            } finally {
+                sharedConnection = null;
+                connectionUsageCount = 0;
             }
         }
+    }
+
+    /**
+     * Check if connection is valid and set the flag accordingly.
+     * Called when an SQL exception occurs.
+     */
+    public static synchronized void markConnectionInvalid() {
+        connectionValid = false;
     }
 
     /**
